@@ -109,7 +109,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="StudentRepository.cs" />
+    <Compile Include="PublisherRepository.cs" />
+    <Compile Include="LoanRepository.cs" />
+    <Compile Include="AuthorRepository.cs" />
+    <Compile Include="BookRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
