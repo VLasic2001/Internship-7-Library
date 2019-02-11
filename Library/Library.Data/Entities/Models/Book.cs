@@ -12,8 +12,10 @@ namespace Library.Data.Models
     {
         public int BookId { get; set; }
         public int NumberOfPages { get; set; }
-        public Genres Genre { get; set; }
+        public Genre Genre { get; set; }
         public Author Author { get; set; }
         public Publisher Publisher { get; set; }
+
+        public ICollection<Loan> Loans { get; set; }
     }
 }

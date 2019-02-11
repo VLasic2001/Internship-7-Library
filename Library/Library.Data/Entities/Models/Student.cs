@@ -13,7 +13,9 @@ namespace Library.Data.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public Genders Gender { get; set; }
+        public Gender Gender { get; set; }
         public string Class { get; set; }
+
+        private ICollection<Loan> Loans { get; set; }
     }
 }

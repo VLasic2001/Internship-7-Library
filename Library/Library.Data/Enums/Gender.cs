@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace Library.Data.Enums
 {
-    public enum Genres
+    public enum Gender
     {
-        Action,
-        Adventure,
-        Crime,
-        Drama,
-        Fantasy,
-        Horror,
-        Romance,
-        Satire
+        Male,
+        Female
     }
 }
