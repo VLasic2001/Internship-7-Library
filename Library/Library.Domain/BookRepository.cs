@@ -10,9 +10,9 @@ namespace Library.Domain
 {
     public class BookRepository
     {
-        public BookRepository(LibraryContext context)
+        public BookRepository()
         {
-            _context = context;
+            _context = new LibraryContext();
         }
 
         private readonly LibraryContext _context;
@@ -20,6 +20,11 @@ namespace Library.Domain
         public Book GetBook(int id)
         {
             return _context.Books.Find(id);
+        }
+
+        public void AddBook(Book bookToAdd)
+        {
+            _context.Books.Add(bookToAdd);
         }
     }
 }

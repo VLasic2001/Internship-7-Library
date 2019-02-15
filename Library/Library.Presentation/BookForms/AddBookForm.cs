@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Library.Data.Entities;
+using Library.Data.Entities.Models;
+using Library.Data.Enums;
+using Library.Data.Models;
+using Library.Domain;
+using Library.Presentation.Popups;
+
+namespace Library.Presentation.BookForms
+{
+    public partial class AddBookForm : Form
+    {
+        private LibraryContext _context { get; set; }
+        public BookRepository BookRepository { get; set; }
+        public Book Book { get; set; }
+        public Author Author { get; set; }
+        public Publisher Publisher { get; set; }
+
+        public AddBookForm()
+        {
+            InitializeComponent();
+            _context = new LibraryContext();
+            BookRepository = new BookRepository();
+            SetupForm();
+        }
+
+        public void SetupForm()
+        {
+            GenreComboBox.DataSource = Enum.GetValues(typeof(Genre));
+            NumberOfPagesNumericUpDown.Value = 1;
+        }
+
+        private void SelectAuthor(object sender, EventArgs e)
+        {
+            var selectAuthor = new SelectAuthorForm(_context);
+            selectAuthor.ShowDialog();
+        }
+
+        private void SelectPublisher(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Save(object sender, EventArgs e)
+        {
+            CreateBook();
+            BookRepository.AddBook(Book);
+        }
+
+        public void CreateBook()
+        {
+            /*Book = new Book(
+                BookNameTextBox.Text,
+                Convert.ToInt32(NumberOfPagesNumericUpDown.Value),
+                (Genre)GenreComboBox.SelectedItem,
+                Author,
+                Publisher
+                );*/
+        }
+    }
+}

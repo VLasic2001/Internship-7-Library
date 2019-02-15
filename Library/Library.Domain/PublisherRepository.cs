@@ -10,9 +10,9 @@ namespace Library.Domain
 {
     public class PublisherRepository
     {
-        public PublisherRepository(LibraryContext context)
+        public PublisherRepository()
         {
-            _context = context;
+            _context = new LibraryContext();
         }
 
         private readonly LibraryContext _context;

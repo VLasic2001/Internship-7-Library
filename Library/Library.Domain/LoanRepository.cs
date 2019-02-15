@@ -10,9 +10,9 @@ namespace Library.Domain
 {
     public class LoanRepository
     {
-        public LoanRepository(LibraryContext context)
+        public LoanRepository()
         {
-            _context = context;
+            _context = new LibraryContext();
         }
 
         private readonly LibraryContext _context;

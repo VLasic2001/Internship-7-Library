@@ -127,6 +127,66 @@ namespace Library.Data.Migrations
                 name: "IX_Loans_StudentId",
                 table: "Loans",
                 column: "StudentId");
+
+            migrationBuilder.DeleteData(
+                table: "Authors",
+                keyColumn: "AuthorId",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Authors",
+                keyColumn: "AuthorId",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Authors",
+                keyColumn: "AuthorId",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "Books",
+                keyColumn: "BookId",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Books",
+                keyColumn: "BookId",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Books",
+                keyColumn: "BookId",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "Publishers",
+                keyColumn: "PublisherId",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Publishers",
+                keyColumn: "PublisherId",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Publishers",
+                keyColumn: "PublisherId",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "Students",
+                keyColumn: "StudentId",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Students",
+                keyColumn: "StudentId",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Students",
+                keyColumn: "StudentId",
+                keyValue: 3);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

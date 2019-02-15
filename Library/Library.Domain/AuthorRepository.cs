@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.Data.Entities;
+using Library.Data.Entities.Models;
 using Library.Data.Models;
 
 namespace Library.Domain
 {
     public class AuthorRepository
     {
-        public AuthorRepository(LibraryContext context)
+        public AuthorRepository()
         {
-            _context = context;
+            _context = new LibraryContext();
         }
 
         private readonly LibraryContext _context;
@@ -20,6 +21,11 @@ namespace Library.Domain
         public Author GetAuthor(int id)
         {
             return _context.Authors.Find(id);
+        }
+
+        public List<Author> GetAllAuthors()
+        {
+            return _context.Authors.ToList();
         }
     }
 }
