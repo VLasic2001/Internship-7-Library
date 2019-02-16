@@ -55,24 +55,29 @@ namespace Library.Presentation.BookForms
 
         private void SelectPublisher(object sender, EventArgs e)
         {
-
+            var selectPublisher = new SelectPublisherForm(_context);
+            selectPublisher.ShowDialog();
+            if (selectPublisher.Publisher == null)
+            {
+                MessageBox.Show(@"No author selected, please select an author and try again", @"No author selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                Publisher = selectPublisher.Publisher;
+                SelectedPublisherLabel.Text = Publisher.ToString();
+            }
         }
 
         private void Save(object sender, EventArgs e)
         {
-            CreateBook();
-            BookRepository.AddBook(Book);
+            CreateAndAddBook();
+            Close();
         }
 
-        public void CreateBook()
+        public void CreateAndAddBook()
         {
-            /*Book = new Book(
-                BookNameTextBox.Text,
-                Convert.ToInt32(NumberOfPagesNumericUpDown.Value),
-                (Genre)GenreComboBox.SelectedItem,
-                Author,
-                Publisher
-                );*/
+            BookRepository.AddBook(BookNameTextBox.Text, decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
+                    (Genre) GenreComboBox.SelectedIndex, Author.AuthorId, Publisher.PublisherId);
         }
     }
 }

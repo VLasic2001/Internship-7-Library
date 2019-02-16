@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.Data.Entities;
+using Library.Data.Enums;
 using Library.Data.Models;
 
 namespace Library.Domain
@@ -22,9 +23,17 @@ namespace Library.Domain
             return _context.Books.Find(id);
         }
 
-        public void AddBook(Book bookToAdd)
+        public void AddBook(string name, int numberOfPages, Genre genre, int authorId, int publisherId)
         {
-            _context.Books.Add(bookToAdd);
+            _context.Books.Add(new Book
+            {
+                Name = name,
+                NumberOfPages = numberOfPages,
+                Genre = genre,
+                AuthorId = authorId,
+                PublisherId = publisherId
+            });
+            _context.SaveChanges();
         }
     }
 }

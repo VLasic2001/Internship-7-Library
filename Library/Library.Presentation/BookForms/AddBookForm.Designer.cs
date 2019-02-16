@@ -122,6 +122,11 @@
             // NumberOfPagesNumericUpDown
             // 
             this.NumberOfPagesNumericUpDown.Location = new System.Drawing.Point(186, 148);
+            this.NumberOfPagesNumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.NumberOfPagesNumericUpDown.Name = "NumberOfPagesNumericUpDown";
             this.NumberOfPagesNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.NumberOfPagesNumericUpDown.TabIndex = 8;

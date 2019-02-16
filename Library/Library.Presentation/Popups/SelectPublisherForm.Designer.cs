@@ -33,7 +33,7 @@
             this.TipLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.SelectPublisherLabel = new System.Windows.Forms.Label();
             this.PublishersListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
@@ -46,6 +46,7 @@
             this.CloseButton.TabIndex = 19;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.Close);
             // 
             // SelectButton
             // 
@@ -55,6 +56,7 @@
             this.SelectButton.TabIndex = 18;
             this.SelectButton.Text = "Select";
             this.SelectButton.UseVisualStyleBackColor = true;
+            this.SelectButton.Click += new System.EventHandler(this.Select);
             // 
             // TipLabel
             // 
@@ -82,13 +84,14 @@
             this.SearchButton.TabIndex = 14;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.Search);
             // 
-            // FirstNameTextBox
+            // NameTextBox
             // 
-            this.FirstNameTextBox.Location = new System.Drawing.Point(535, 106);
-            this.FirstNameTextBox.Name = "FirstNameTextBox";
-            this.FirstNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.FirstNameTextBox.TabIndex = 12;
+            this.NameTextBox.Location = new System.Drawing.Point(535, 106);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.NameTextBox.TabIndex = 12;
             // 
             // SelectPublisherLabel
             // 
@@ -118,7 +121,7 @@
             this.Controls.Add(this.TipLabel);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.SearchButton);
-            this.Controls.Add(this.FirstNameTextBox);
+            this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.SelectPublisherLabel);
             this.Controls.Add(this.PublishersListBox);
             this.Name = "SelectPublisherForm";
@@ -135,7 +138,7 @@
         private System.Windows.Forms.Label TipLabel;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.TextBox FirstNameTextBox;
+        private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label SelectPublisherLabel;
         private System.Windows.Forms.ListBox PublishersListBox;
     }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.Data.Entities;
 using Library.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Domain
 {
@@ -20,6 +21,11 @@ namespace Library.Domain
         public Publisher GetPublisher(int id)
         {
             return _context.Publishers.Find(id);
+        }
+
+        public List<Publisher> GetAllPublishers()
+        {
+            return _context.Publishers.Include(publisher => publisher.Books).ToList();
         }
     }
 }

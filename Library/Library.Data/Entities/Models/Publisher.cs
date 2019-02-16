@@ -12,5 +12,10 @@ namespace Library.Data.Models
         public string Name { get; set; }
 
         public ICollection<Book> Books { get; set; }
+
+        public override string ToString()
+        {
+            return Books.Count > 0 ? $"{Name} - {Books.Count} books ({Books.FirstOrDefault()}...)" : $"{Name}";
+        }
     }
 }
