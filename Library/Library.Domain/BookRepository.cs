@@ -41,5 +41,11 @@ namespace Library.Domain
         {
             return _context.Books.ToList();
         }
+
+        public void DeleteBook(Book bookToDelete)
+        {
+            _context.Books.Remove(bookToDelete);
+            _context.SaveChanges();
+        }
     }
 }
