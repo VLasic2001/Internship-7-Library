@@ -69,6 +69,7 @@
             this.ListOfBooksButton.TabIndex = 2;
             this.ListOfBooksButton.Text = "List Of Books";
             this.ListOfBooksButton.UseVisualStyleBackColor = true;
+            this.ListOfBooksButton.Click += new System.EventHandler(this.ListOfBooks);
             // 
             // ListOfAuthorsButton
             // 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Library.Data.Entities;
 using Library.Data.Enums;
 using Library.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Domain
 {
@@ -34,6 +35,11 @@ namespace Library.Domain
                 PublisherId = publisherId
             });
             _context.SaveChanges();
+        }
+
+        public List<Book> GetAllBooks()
+        {
+            return _context.Books.ToList();
         }
     }
 }

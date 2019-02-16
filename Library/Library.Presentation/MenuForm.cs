@@ -34,23 +34,12 @@ namespace Library.Presentation
         public void SeedData()
         {
             Seeding.SeedingData();
-            var context = new LibraryContext();
-            context.Authors.Find(1).Books = new List<Book>();
-            context.Authors.Find(2).Books = new List<Book>();
-            context.Authors.Find(3).Books = new List<Book>();
+        }
 
-            context.Publishers.Find(1).Books = new List<Book>();
-            context.Publishers.Find(2).Books = new List<Book>();
-            context.Publishers.Find(3).Books = new List<Book>();
-
-            context.Authors.Find(1).Books.Add(context.Books.Find(1));
-            context.Authors.Find(2).Books.Add(context.Books.Find(2));
-            context.Authors.Find(3).Books.Add(context.Books.Find(3));
-
-            context.Publishers.Find(1).Books.Add(context.Books.Find(1));
-            context.Publishers.Find(2).Books.Add(context.Books.Find(2));
-            context.Publishers.Find(3).Books.Add(context.Books.Find(3));
-            context.SaveChanges(); 
+        private void ListOfBooks(object sender, EventArgs e)
+        {
+            var listOfBooks = new ListOfBooksForm();
+            listOfBooks.ShowDialog();
         }
     }
 }
