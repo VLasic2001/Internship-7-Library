@@ -21,7 +21,7 @@ namespace Library.Domain
 
         public Author GetAuthor(int id)
         {
-            return _context.Authors.Find(id);
+            return _context.Authors.Include(author => author.Books).ToList().FirstOrDefault(author => author.AuthorId == id);
         }
 
         public List<Author> GetAllAuthors()

@@ -16,26 +16,34 @@ using Library.Presentation.Popups;
 
 namespace Library.Presentation.BookForms
 {
-    public partial class AddBookForm : Form
+    public partial class EditBookForm : Form
     {
-        private LibraryContext _context { get; set; }
-        public BookRepository BookRepository { get; set; }
-        public Book Book { get; set; }
+        private Book _book { get; set; }
         public Author Author { get; set; }
         public Publisher Publisher { get; set; }
+        private readonly LibraryContext _context = new LibraryContext();
+        public BookRepository BookRepository = new BookRepository();
 
-        public AddBookForm()
+        public EditBookForm(Book book)
         {
+            
             InitializeComponent();
-            _context = new LibraryContext();
-            BookRepository = new BookRepository();
-            SetupForm();
+            _book = book;
+            UpdateForm();
         }
 
-        public void SetupForm()
+        public void UpdateForm()
         {
+            var authorRepository = new AuthorRepository();
+            Author = authorRepository.GetAuthor(_book.AuthorId);
+            var publisherRepository = new PublisherRepository();
+            Publisher = publisherRepository.GetPublisher(_book.PublisherId);
             GenreComboBox.DataSource = Enum.GetValues(typeof(Genre));
-            NumberOfPagesNumericUpDown.Value = 1;
+            BookNameTextBox.Text = _book.Name;
+            NumberOfPagesNumericUpDown.Value = _book.NumberOfPages;
+            GenreComboBox.SelectedItem = _book.Genre;
+            SelectedAuthorLabel.Text = Author.ToString();
+            SelectedPublisherLabel.Text = Publisher.ToString();
         }
 
         private void SelectAuthor(object sender, EventArgs e)
@@ -44,7 +52,7 @@ namespace Library.Presentation.BookForms
             selectAuthor.ShowDialog();
             if (selectAuthor.Author == null)
             {
-                MessageBox.Show(@"No author selected, please select an author and try again", @"No author selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Author not changed", @"No author was selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -59,20 +67,13 @@ namespace Library.Presentation.BookForms
             selectPublisher.ShowDialog();
             if (selectPublisher.Publisher == null)
             {
-                MessageBox.Show(@"No author selected, please select an author and try again", @"No author selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Publisher not changed", @"No publisher was selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 Publisher = selectPublisher.Publisher;
                 SelectedPublisherLabel.Text = Publisher.ToString();
             }
-        }
-
-        private void Save(object sender, EventArgs e)
-        {
-            if (!IsInCorrectFormat()) return;
-            CreateAndAddBook();
-            Close();
         }
 
         public bool IsInCorrectFormat()
@@ -95,25 +96,27 @@ namespace Library.Presentation.BookForms
                 return false;
             }
 
-            if (Publisher == null)
-            {
-                MessageBox.Show(@"Select a publisher first", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            
-            return true;
+            if (Publisher != null) return true;
+            MessageBox.Show(@"Select a publisher first", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+
         }
 
-        public void CreateAndAddBook()
+        private void Save(object sender, EventArgs e)
         {
-            Book = new Book(BookNameTextBox.Text, decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
-                (Genre)GenreComboBox.SelectedIndex, Author, Publisher);
-            BookRepository.AddBook(Book);
-        }
-
-        private void Close(object sender, EventArgs e)
-        {
+            if (!IsInCorrectFormat()) return;
+            EditBook();
             Close();
+        }
+
+        public void EditBook()
+        {
+            _context.Books.Find(_book.BookId).Name = BookNameTextBox.Text;
+            _context.Books.Find(_book.BookId).NumberOfPages = decimal.ToInt32(NumberOfPagesNumericUpDown.Value);
+            _context.Books.Find(_book.BookId).Genre = (Genre)GenreComboBox.SelectedIndex;
+            _context.Books.Find(_book.BookId).AuthorId = Author.AuthorId;
+            _context.Books.Find(_book.BookId).PublisherId = Publisher.PublisherId;
+            _context.SaveChanges();
         }
     }
 }

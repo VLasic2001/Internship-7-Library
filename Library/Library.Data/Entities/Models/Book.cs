@@ -21,5 +21,18 @@ namespace Library.Data.Entities.Models
         {
             return Name;
         }
+
+        public Book()
+        {
+            
+        }
+        public Book(string name, int numberOfPages, Genre genre, Author author, Publisher publisher)
+        {
+            Name = name;
+            NumberOfPages = numberOfPages;
+            Genre = genre;
+            AuthorId = author.AuthorId;
+            PublisherId = publisher.PublisherId;
+        }
     }
 }

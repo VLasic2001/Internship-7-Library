@@ -126,6 +126,12 @@
     <Compile Include="BookForms\BookDetailsForm.Designer.cs">
       <DependentUpon>BookDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookForms\EditBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookForms\EditBookForm.Designer.cs">
+      <DependentUpon>EditBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BookForms\ListOfBooksForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookForms\BookDetailsForm.resx">
       <DependentUpon>BookDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookForms\EditBookForm.resx">
+      <DependentUpon>EditBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookForms\ListOfBooksForm.resx">
       <DependentUpon>ListOfBooksForm.cs</DependentUpon>

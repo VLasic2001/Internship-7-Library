@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Data.Models;
@@ -17,7 +18,8 @@ namespace Library.Presentation.BookForms
     public partial class ListOfBooksForm : Form
     {
         private LibraryContext _context { get; set; }
-        private BookRepository _bookRepository = new BookRepository();
+        private BookRepository _bookRepository { get; set; }
+    
         public ListOfBooksForm()
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace Library.Presentation.BookForms
 
         public void UpdateList()
         {
+            _bookRepository = new BookRepository();
             BooksListBox.Items.Clear();
             _bookRepository.GetAllBooks().ForEach(book => BooksListBox.Items.Add(book));
         }
@@ -58,6 +61,19 @@ namespace Library.Presentation.BookForms
             }
             var bookDetails = new BookDetailsForm((Book)BooksListBox.SelectedItem);
             bookDetails.ShowDialog();
+            UpdateList();
+        }
+
+        private void Edit(object sender, EventArgs e)
+        {
+            if (BooksListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the book you want to edit", @"No book selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+             var editBook = new EditBookForm((Book)BooksListBox.SelectedItem);
+            editBook.ShowDialog();
+            UpdateList();
         }
     }
 }

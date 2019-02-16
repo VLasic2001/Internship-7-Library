@@ -20,7 +20,7 @@ namespace Library.Domain
 
         public Publisher GetPublisher(int id)
         {
-            return _context.Publishers.Find(id);
+            return _context.Publishers.Include(publisher => publisher.Books).ToList().FirstOrDefault(publisher => publisher.PublisherId == id);
         }
 
         public List<Publisher> GetAllPublishers()

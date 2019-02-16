@@ -25,16 +25,9 @@ namespace Library.Domain
             return _context.Books.Find(id);
         }
 
-        public void AddBook(string name, int numberOfPages, Genre genre, int authorId, int publisherId)
+        public void AddBook(Book bookToAdd)
         {
-            _context.Books.Add(new Book
-            {
-                Name = name,
-                NumberOfPages = numberOfPages,
-                Genre = genre,
-                AuthorId = authorId,
-                PublisherId = publisherId
-            });
+            _context.Books.Add(bookToAdd);
             _context.SaveChanges();
         }
 
@@ -45,7 +38,12 @@ namespace Library.Domain
 
         public void DeleteBook(Book bookToDelete)
         {
-            _context.Books.Remove(bookToDelete);
+            var books = _context.Books;
+            foreach (var book in books.ToList())
+            {
+                if (book.BookId == bookToDelete.BookId)
+                    books.Remove(book);
+            }
             _context.SaveChanges();
         }
     }
