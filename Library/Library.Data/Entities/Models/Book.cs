@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Library.Data.Entities.Models;
+﻿using System.Collections.Generic;
 using Library.Data.Enums;
 using Library.Data.Models;
 
-namespace Library.Data.Models
+namespace Library.Data.Entities.Models
 {
     public class Book
     {

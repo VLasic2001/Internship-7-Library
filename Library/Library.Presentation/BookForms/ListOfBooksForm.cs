@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities;
+using Library.Data.Entities.Models;
 using Library.Data.Models;
 using Library.Domain;
 
@@ -46,6 +47,17 @@ namespace Library.Presentation.BookForms
             if (MessageBox.Show($@"Are you sure you want to delete {selection.Name}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
             _bookRepository.DeleteBook(selection);
             UpdateList();
+        }
+
+        private void Details(object sender, EventArgs e)
+        {
+            if (BooksListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the book you want to see the details of", @"No book selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var bookDetails = new BookDetailsForm((Book)BooksListBox.SelectedItem);
+            bookDetails.ShowDialog();
         }
     }
 }

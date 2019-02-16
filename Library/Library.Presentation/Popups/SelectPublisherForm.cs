@@ -64,7 +64,7 @@ namespace Library.Presentation.Popups
         {
             if (PublishersListBox.SelectedItem == null)
             {
-                MessageBox.Show(@"No publisher selected, please select an author and try again", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"No publisher selected, please select a publisher and try again", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

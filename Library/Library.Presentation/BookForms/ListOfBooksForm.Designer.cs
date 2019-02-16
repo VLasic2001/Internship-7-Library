@@ -62,6 +62,7 @@
             this.DetailsButton.TabIndex = 2;
             this.DetailsButton.Text = "Book Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
+            this.DetailsButton.Click += new System.EventHandler(this.Details);
             // 
             // EditButton
             // 
