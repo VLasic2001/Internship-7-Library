@@ -42,6 +42,15 @@ namespace Library.Presentation.BookForms
         {
             var selectAuthor = new SelectAuthorForm(_context);
             selectAuthor.ShowDialog();
+            if (selectAuthor.Author == null)
+            {
+                MessageBox.Show(@"No author selected, please select an author and try again", @"No author selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                Author = selectAuthor.Author;
+                SelectedAuthorLabel.Text = Author.ToString();
+            }
         }
 
         private void SelectPublisher(object sender, EventArgs e)

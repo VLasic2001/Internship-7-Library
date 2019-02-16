@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20190211194425_InitialCreate")]
+    [Migration("20190216083123_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace Library.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Library.Data.Models.Author", b =>
+            modelBuilder.Entity("Library.Data.Entities.Models.Author", b =>
                 {
                     b.Property<int>("AuthorId")
                         .ValueGeneratedOnAdd()
@@ -46,6 +46,8 @@ namespace Library.Data.Migrations
 
                     b.Property<int>("Genre");
 
+                    b.Property<string>("Name");
+
                     b.Property<int>("NumberOfPages");
 
                     b.Property<int?>("PublisherId");
@@ -69,7 +71,7 @@ namespace Library.Data.Migrations
 
                     b.Property<DateTime>("LoanDate");
 
-                    b.Property<DateTime>("ReturnDate");
+                    b.Property<DateTime?>("ReturnDate");
 
                     b.Property<int>("StudentId");
 
@@ -118,7 +120,7 @@ namespace Library.Data.Migrations
 
             modelBuilder.Entity("Library.Data.Models.Book", b =>
                 {
-                    b.HasOne("Library.Data.Models.Author", "Author")
+                    b.HasOne("Library.Data.Entities.Models.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId");
 

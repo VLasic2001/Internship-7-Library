@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Domain
 {
@@ -25,7 +26,7 @@ namespace Library.Domain
 
         public List<Author> GetAllAuthors()
         {
-            return _context.Authors.ToList();
+            return _context.Authors.Include(author => author.Books).ToList();
         }
     }
 }

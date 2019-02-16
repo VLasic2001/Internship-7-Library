@@ -80,6 +80,7 @@
             this.SearchButton.TabIndex = 4;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.Search);
             // 
             // FirstNameLabel
             // 
@@ -116,6 +117,7 @@
             this.SelectButton.TabIndex = 8;
             this.SelectButton.Text = "Select";
             this.SelectButton.UseVisualStyleBackColor = true;
+            this.SelectButton.Click += new System.EventHandler(this.Select);
             // 
             // CloseButton
             // 
@@ -125,6 +127,7 @@
             this.CloseButton.TabIndex = 9;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.Close);
             // 
             // SelectAuthorForm
             // 

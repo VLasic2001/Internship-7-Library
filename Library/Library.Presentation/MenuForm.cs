@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Data.Models;
+using Library.Data.Utility;
 using Library.Presentation.BookForms;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
@@ -21,8 +22,7 @@ namespace Library.Presentation
         public MenuForm()
         {
             InitializeComponent();
-
-            LinkData();
+            SeedData();
         }
 
         private void AddBook(object sender, EventArgs e)
@@ -31,19 +31,18 @@ namespace Library.Presentation
             addBook.ShowDialog();
         }
 
-        public void LinkData()
+        public void SeedData()
         {
+            Seeding.SeedingData();
             var context = new LibraryContext();
-            foreach (var author in context.Authors)
-            {
-                author.Books = new List<Book>();
-            }
-            foreach (var publisher in context.Publishers)
-            {
-                publisher.Books = new List<Book>();
-            }
+            context.Authors.Find(1).Books = new List<Book>();
+            context.Authors.Find(2).Books = new List<Book>();
+            context.Authors.Find(3).Books = new List<Book>();
 
-            context.SaveChanges();
+            context.Publishers.Find(1).Books = new List<Book>();
+            context.Publishers.Find(2).Books = new List<Book>();
+            context.Publishers.Find(3).Books = new List<Book>();
+
             context.Authors.Find(1).Books.Add(context.Books.Find(1));
             context.Authors.Find(2).Books.Add(context.Books.Find(2));
             context.Authors.Find(3).Books.Add(context.Books.Find(3));
@@ -51,7 +50,7 @@ namespace Library.Presentation
             context.Publishers.Find(1).Books.Add(context.Books.Find(1));
             context.Publishers.Find(2).Books.Add(context.Books.Find(2));
             context.Publishers.Find(3).Books.Add(context.Books.Find(3));
-            context.SaveChanges();
+            context.SaveChanges(); 
         }
     }
 }

@@ -58,6 +58,7 @@ namespace Library.Data.Migrations
                 {
                     BookId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
                     NumberOfPages = table.Column<int>(nullable: false),
                     Genre = table.Column<int>(nullable: false),
                     AuthorId = table.Column<int>(nullable: true),
@@ -89,7 +90,7 @@ namespace Library.Data.Migrations
                     BookId = table.Column<int>(nullable: false),
                     StudentId = table.Column<int>(nullable: false),
                     LoanDate = table.Column<DateTime>(nullable: false),
-                    ReturnDate = table.Column<DateTime>(nullable: false)
+                    ReturnDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -127,66 +128,6 @@ namespace Library.Data.Migrations
                 name: "IX_Loans_StudentId",
                 table: "Loans",
                 column: "StudentId");
-
-            migrationBuilder.DeleteData(
-                table: "Authors",
-                keyColumn: "AuthorId",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Authors",
-                keyColumn: "AuthorId",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Authors",
-                keyColumn: "AuthorId",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "Books",
-                keyColumn: "BookId",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Books",
-                keyColumn: "BookId",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Books",
-                keyColumn: "BookId",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "Publishers",
-                keyColumn: "PublisherId",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Publishers",
-                keyColumn: "PublisherId",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Publishers",
-                keyColumn: "PublisherId",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "Students",
-                keyColumn: "StudentId",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Students",
-                keyColumn: "StudentId",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Students",
-                keyColumn: "StudentId",
-                keyValue: 3);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

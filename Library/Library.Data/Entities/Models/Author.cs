@@ -15,7 +15,6 @@ namespace Library.Data.Entities.Models
 
         public override string ToString()
         {
-
             return Books.Count > 0 ? $"{FirstName} {LastName} - {Books.Count} books ({Books.FirstOrDefault()}...)" : $"{FirstName} {LastName}";
         }
     }
