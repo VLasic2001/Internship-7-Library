@@ -70,14 +70,49 @@ namespace Library.Presentation.BookForms
 
         private void Save(object sender, EventArgs e)
         {
+            if (!IsInCorrectFormat()) return;
             CreateAndAddBook();
             Close();
+        }
+
+        public bool IsInCorrectFormat()
+        {
+            if (string.IsNullOrWhiteSpace(BookNameTextBox.Text))
+            {
+                MessageBox.Show(@"Book name cannot be empty", @"Book name empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!int.TryParse(Convert.ToInt32(NumberOfPagesNumericUpDown.Value).ToString(), out var result))
+            {
+                MessageBox.Show(@"Number of pages must be a number", @"Incorrect format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (Author == null)
+            {
+                MessageBox.Show(@"Select an author first", @"No Author selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (Publisher == null)
+            {
+                MessageBox.Show(@"Select a publisher first", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            
+            return true;
         }
 
         public void CreateAndAddBook()
         {
             BookRepository.AddBook(BookNameTextBox.Text, decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
                     (Genre) GenreComboBox.SelectedIndex, Author.AuthorId, Publisher.PublisherId);
+        }
+
+        private void Close(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

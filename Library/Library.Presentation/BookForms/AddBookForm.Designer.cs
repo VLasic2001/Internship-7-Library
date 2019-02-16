@@ -142,6 +142,7 @@
             // 
             // GenreComboBox
             // 
+            this.GenreComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GenreComboBox.FormattingEnabled = true;
             this.GenreComboBox.Location = new System.Drawing.Point(186, 192);
             this.GenreComboBox.Name = "GenreComboBox";
@@ -166,6 +167,7 @@
             this.CloseButton.TabIndex = 12;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.Close);
             // 
             // AddBookForm
             // 
