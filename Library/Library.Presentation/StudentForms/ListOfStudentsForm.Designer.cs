@@ -82,6 +82,7 @@
             this.EditButton.TabIndex = 7;
             this.EditButton.Text = "Edit Student";
             this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.Edit);
             // 
             // DetailsButton
             // 

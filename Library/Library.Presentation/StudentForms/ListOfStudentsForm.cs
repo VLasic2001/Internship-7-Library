@@ -61,5 +61,17 @@ namespace Library.Presentation.StudentForms
             studentDetails.ShowDialog();
             UpdateList();
         }
+
+        private void Edit(object sender, EventArgs e)
+        {
+            if (StudentsListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the student you want to edit", @"No student selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var editStudent = new EditStudentForm((Student)StudentsListBox.SelectedItem);
+            editStudent.ShowDialog();
+            UpdateList();
+        }
     }
 }

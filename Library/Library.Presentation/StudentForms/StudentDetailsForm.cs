@@ -22,12 +22,12 @@ namespace Library.Presentation.StudentForms
         {
             InitializeComponent();
             _student = student;
-            _studentRepository = new StudentRepository();
             UpdateForm();
         }
 
         public void UpdateForm()
         {
+            _studentRepository = new StudentRepository();
             _student = _studentRepository.GetStudent(_student.StudentId);
             FirstNameLabel.Text = $"First Name: {_student.FirstName}";
             LastNameLabel.Text = $"Last Name: {_student.LastName}";
@@ -39,6 +39,13 @@ namespace Library.Presentation.StudentForms
         private void Close(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Edit(object sender, EventArgs e)
+        {
+            var editStudent = new EditStudentForm(_student);
+            editStudent.ShowDialog();
+            UpdateForm();
         }
     }
 }

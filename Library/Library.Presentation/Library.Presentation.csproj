@@ -212,6 +212,12 @@
     <Compile Include="StudentForms\AddStudentForm.Designer.cs">
       <DependentUpon>AddStudentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StudentForms\EditStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentForms\EditStudentForm.Designer.cs">
+      <DependentUpon>EditStudentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StudentForms\ListOfStudentsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentForms\AddStudentForm.resx">
       <DependentUpon>AddStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentForms\EditStudentForm.resx">
+      <DependentUpon>EditStudentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentForms\ListOfStudentsForm.resx">
       <DependentUpon>ListOfStudentsForm.cs</DependentUpon>
