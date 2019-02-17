@@ -56,7 +56,7 @@
             // 
             // DetailsButton
             // 
-            this.DetailsButton.Location = new System.Drawing.Point(563, 123);
+            this.DetailsButton.Location = new System.Drawing.Point(587, 124);
             this.DetailsButton.Name = "DetailsButton";
             this.DetailsButton.Size = new System.Drawing.Size(95, 31);
             this.DetailsButton.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(563, 160);
+            this.EditButton.Location = new System.Drawing.Point(587, 161);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(95, 33);
             this.EditButton.TabIndex = 3;
@@ -76,7 +76,7 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(563, 199);
+            this.DeleteButton.Location = new System.Drawing.Point(587, 200);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(95, 34);
             this.DeleteButton.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(563, 323);
+            this.CloseButton.Location = new System.Drawing.Point(587, 324);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(95, 34);
             this.CloseButton.TabIndex = 5;

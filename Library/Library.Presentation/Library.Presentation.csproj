@@ -120,6 +120,12 @@
     <Compile Include="AuthorForms\AddAuthorForm.Designer.cs">
       <DependentUpon>AddAuthorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AuthorForms\ListOfAuthorsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuthorForms\ListOfAuthorsForm.Designer.cs">
+      <DependentUpon>ListOfAuthorsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BookForms\AddBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AuthorForms\AddAuthorForm.resx">
       <DependentUpon>AddAuthorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuthorForms\ListOfAuthorsForm.resx">
+      <DependentUpon>ListOfAuthorsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookForms\AddBookForm.resx">
       <DependentUpon>AddBookForm.cs</DependentUpon>

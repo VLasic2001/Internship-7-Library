@@ -38,12 +38,7 @@ namespace Library.Domain
 
         public void DeleteBook(Book bookToDelete)
         {
-            var books = _context.Books;
-            foreach (var book in books.ToList())
-            {
-                if (book.BookId == bookToDelete.BookId)
-                    books.Remove(book);
-            }
+            _context.Books.Remove(bookToDelete);
             _context.SaveChanges();
         }
     }

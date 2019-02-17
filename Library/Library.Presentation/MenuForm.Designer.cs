@@ -79,6 +79,7 @@
             this.ListOfAuthorsButton.TabIndex = 4;
             this.ListOfAuthorsButton.Text = "List Of Authors";
             this.ListOfAuthorsButton.UseVisualStyleBackColor = true;
+            this.ListOfAuthorsButton.Click += new System.EventHandler(this.ListOfAuthors);
             // 
             // AddAuthorButton
             // 

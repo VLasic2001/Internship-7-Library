@@ -34,5 +34,11 @@ namespace Library.Domain
             _context.Authors.Add(authorToAdd);
             _context.SaveChanges();
         }
+
+        public void DeleteAuthor(Author authorToDelete)
+        {
+            _context.Authors.Remove(authorToDelete);
+            _context.SaveChanges();
+        }
     }
 }

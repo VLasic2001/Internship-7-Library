@@ -25,16 +25,16 @@ namespace Library.Presentation
             InitializeComponent();
             SeedData();
         }
+        
+        public void SeedData()
+        {
+            Seeding.SeedingData();
+        }
 
         private void AddBook(object sender, EventArgs e)
         {
             var addBook = new AddBookForm();
             addBook.ShowDialog();
-        }
-
-        public void SeedData()
-        {
-            Seeding.SeedingData();
         }
 
         private void ListOfBooks(object sender, EventArgs e)
@@ -47,6 +47,12 @@ namespace Library.Presentation
         {
             var addAuthor = new AddAuthorForm();
             addAuthor.ShowDialog();
+        }
+
+        private void ListOfAuthors(object sender, EventArgs e)
+        {
+            var listOfAuthors = new ListOfAuthorsForm();
+            listOfAuthors.ShowDialog();
         }
     }
 }
