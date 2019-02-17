@@ -64,7 +64,9 @@ namespace Library.Presentation.AuthorForms
 
         private void Edit(object sender, EventArgs e)
         {
-
+            var editAuthor = new EditAuthorForm((Author)AuthorsListBox.SelectedItem, _context);
+            editAuthor.ShowDialog();
+            UpdateList();
         }
     }
 }

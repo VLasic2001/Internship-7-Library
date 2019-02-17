@@ -126,6 +126,12 @@
     <Compile Include="AuthorForms\AuthorDetailsForm.Designer.cs">
       <DependentUpon>AuthorDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AuthorForms\EditAuthorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuthorForms\EditAuthorForm.Designer.cs">
+      <DependentUpon>EditAuthorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AuthorForms\ListOfAuthorsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AuthorForms\AuthorDetailsForm.resx">
       <DependentUpon>AuthorDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuthorForms\EditAuthorForm.resx">
+      <DependentUpon>EditAuthorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AuthorForms\ListOfAuthorsForm.resx">
       <DependentUpon>ListOfAuthorsForm.cs</DependentUpon>
