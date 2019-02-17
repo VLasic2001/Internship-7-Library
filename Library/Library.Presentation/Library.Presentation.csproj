@@ -194,6 +194,12 @@
     <Compile Include="PublisherForms\ListOfPublishersForm.Designer.cs">
       <DependentUpon>ListOfPublishersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PublisherForms\PublisherDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PublisherForms\PublisherDetailsForm.Designer.cs">
+      <DependentUpon>PublisherDetailsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AuthorForms\AddAuthorForm.resx">
       <DependentUpon>AddAuthorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PublisherForms\ListOfPublishersForm.resx">
       <DependentUpon>ListOfPublishersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PublisherForms\PublisherDetailsForm.resx">
+      <DependentUpon>PublisherDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

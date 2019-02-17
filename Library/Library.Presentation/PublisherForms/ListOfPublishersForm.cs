@@ -52,7 +52,14 @@ namespace Library.Presentation.PublisherForms
 
         private void Details(object sender, EventArgs e)
         {
-
+            if (PublishersListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the publisher you want to see the details of", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var publisherDetails = new PublisherDetailsForm((Publisher)PublishersListBox.SelectedItem);
+            publisherDetails.ShowDialog();
+            UpdateList();
         }
 
         private void Edit(object sender, EventArgs e)

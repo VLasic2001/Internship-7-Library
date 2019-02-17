@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Presentation.AuthorForms
 {
@@ -27,9 +28,12 @@ namespace Library.Presentation.AuthorForms
 
         public void UpdateForm()
         {
-            _author = _context.Authors.Find(_author.AuthorId);
+            _author = _context.Authors.Include(author => author.Books).First(author => author.AuthorId == _author.AuthorId);
             FirstNameLabel.Text = $"First Name: {_author.FirstName}";
             LastNameLabel.Text = $"Last Name: {_author.LastName}";
+            BooksListBox.Items.Clear();
+            _author.Books.ToList().ForEach(book => BooksListBox.Items.Add(book));
+
         }
 
         private void Close(object sender, EventArgs e)
