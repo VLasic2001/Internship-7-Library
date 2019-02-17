@@ -91,6 +91,7 @@
             this.DetailsButton.TabIndex = 6;
             this.DetailsButton.Text = "Student Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
+            this.DetailsButton.Click += new System.EventHandler(this.Details);
             // 
             // ListOfStudentsForm
             // 

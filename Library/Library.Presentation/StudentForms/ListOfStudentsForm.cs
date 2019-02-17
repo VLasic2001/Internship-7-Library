@@ -49,5 +49,17 @@ namespace Library.Presentation.StudentForms
             _studentRepository.DeleteStudent(selection);
             UpdateList();
         }
+
+        private void Details(object sender, EventArgs e)
+        {
+            if (StudentsListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the student you want to see the details of", @"No student selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var studentDetails = new StudentDetailsForm((Student)StudentsListBox.SelectedItem);
+            studentDetails.ShowDialog();
+            UpdateList();
+        }
     }
 }

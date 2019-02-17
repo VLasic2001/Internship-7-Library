@@ -218,6 +218,12 @@
     <Compile Include="StudentForms\ListOfStudentsForm.Designer.cs">
       <DependentUpon>ListOfStudentsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StudentForms\StudentDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentForms\StudentDetailsForm.Designer.cs">
+      <DependentUpon>StudentDetailsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AuthorForms\AddAuthorForm.resx">
       <DependentUpon>AddAuthorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentForms\ListOfStudentsForm.resx">
       <DependentUpon>ListOfStudentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentForms\StudentDetailsForm.resx">
+      <DependentUpon>StudentDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
