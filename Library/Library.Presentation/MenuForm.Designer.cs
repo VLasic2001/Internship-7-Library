@@ -126,6 +126,7 @@
             this.AddPublisherButton.TabIndex = 5;
             this.AddPublisherButton.Text = "Add Publisher";
             this.AddPublisherButton.UseVisualStyleBackColor = true;
+            this.AddPublisherButton.Click += new System.EventHandler(this.AddPublisher);
             // 
             // ListOfLoansButton
             // 

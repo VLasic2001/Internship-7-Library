@@ -18,5 +18,15 @@ namespace Library.Data.Models
         {
             return Books.Count > 0 ? $"{Name} - {Books.Count} books ({Books.FirstOrDefault()}...)" : $"{Name}";
         }
+
+        public Publisher()
+        {
+            
+        }
+
+        public Publisher(string name)
+        {
+            Name = name;
+        }
     }
 }

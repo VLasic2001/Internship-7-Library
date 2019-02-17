@@ -35,7 +35,6 @@ namespace Library.Presentation.AuthorForms
                 !string.IsNullOrWhiteSpace(LastNameTextBox.Text)) return true;
             MessageBox.Show(@"Name cannot be empty", @"Name empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
-
         }
 
         private void Close(object sender, EventArgs e)

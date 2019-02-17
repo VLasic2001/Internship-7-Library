@@ -85,8 +85,8 @@ namespace Library.Presentation.Popups
             else
             {
                 Author = (Author)AuthorsListBox.SelectedItem;
+                Close();
             }
-            Close();
         }
 
         private void Close(object sender, EventArgs e)

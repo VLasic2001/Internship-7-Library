@@ -27,5 +27,11 @@ namespace Library.Domain
         {
             return _context.Publishers.Include(publisher => publisher.Books).ToList();
         }
+
+        public void AddPublisher(Publisher publisherToAdd)
+        {
+            _context.Publishers.Add(publisherToAdd);
+            _context.SaveChanges();
+        }
     }
 }
