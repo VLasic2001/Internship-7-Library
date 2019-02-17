@@ -35,5 +35,11 @@ namespace Library.Domain
             _context.Students.Add(studentToAdd);
             _context.SaveChanges();
         }
+
+        public void DeleteStudent(Student studentToRemove)
+        {
+            _context.Students.Remove(studentToRemove);
+            _context.SaveChanges();
+        }
     }
 }
