@@ -14,7 +14,7 @@ namespace Library.Data.Entities.Models
         public Gender Gender { get; set; }
         public string Class { get; set; }
 
-        private ICollection<Loan> Loans { get; set; }
+        public ICollection<Loan> Loans { get; set; }
 
         public Student()
         {
@@ -28,6 +28,11 @@ namespace Library.Data.Entities.Models
             DateOfBirth = dateOfBirth;
             Gender = gender;
             Class = studentClass;
+        }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName} {Class}";
         }
     }
 }

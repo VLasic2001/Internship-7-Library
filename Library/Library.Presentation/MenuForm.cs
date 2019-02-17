@@ -74,5 +74,11 @@ namespace Library.Presentation
             var addStudent = new AddStudentForm();
             addStudent.ShowDialog();
         }
+
+        private void ListOfStudents(object sender, EventArgs e)
+        {
+            var listOfStudents = new ListOfStudentsForm();
+            listOfStudents.ShowDialog();
+        }
     }
 }

@@ -17,13 +17,12 @@ namespace Library.Presentation.BookForms
 {
     public partial class ListOfBooksForm : Form
     {
-        private LibraryContext _context { get; set; }
+
         private BookRepository _bookRepository { get; set; }
     
         public ListOfBooksForm()
         {
             InitializeComponent();
-            _context = new LibraryContext();
             UpdateList();
         }
 

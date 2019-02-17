@@ -34,6 +34,7 @@ namespace Library.Presentation.StudentForms
         {
             if (!IsInCorrectFormat()) return;
             _studentRepository.AddStudent(new Student(FirstNameTextBox.Text, LastNameTextBox.Text, DateOfBirthDateTimePicker.Value, (Gender)GenderComboBox.SelectedItem, ClassTextBox.Text));
+            Close();
         }
 
         public bool IsInCorrectFormat()

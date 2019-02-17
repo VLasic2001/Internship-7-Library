@@ -33,7 +33,7 @@
             this.ListOfBooksButton = new System.Windows.Forms.Button();
             this.ListOfAuthorsButton = new System.Windows.Forms.Button();
             this.AddAuthorButton = new System.Windows.Forms.Button();
-            this.ListOfStudents = new System.Windows.Forms.Button();
+            this.ListOfStudentsButton = new System.Windows.Forms.Button();
             this.AddStudentButton = new System.Windows.Forms.Button();
             this.ListOfPublishersButton = new System.Windows.Forms.Button();
             this.AddPublisherButton = new System.Windows.Forms.Button();
@@ -91,14 +91,15 @@
             this.AddAuthorButton.UseVisualStyleBackColor = true;
             this.AddAuthorButton.Click += new System.EventHandler(this.AddAuthor);
             // 
-            // ListOfStudents
+            // ListOfStudentsButton
             // 
-            this.ListOfStudents.Location = new System.Drawing.Point(466, 163);
-            this.ListOfStudents.Name = "ListOfStudents";
-            this.ListOfStudents.Size = new System.Drawing.Size(102, 34);
-            this.ListOfStudents.TabIndex = 8;
-            this.ListOfStudents.Text = "List Of Students";
-            this.ListOfStudents.UseVisualStyleBackColor = true;
+            this.ListOfStudentsButton.Location = new System.Drawing.Point(466, 163);
+            this.ListOfStudentsButton.Name = "ListOfStudentsButton";
+            this.ListOfStudentsButton.Size = new System.Drawing.Size(102, 34);
+            this.ListOfStudentsButton.TabIndex = 8;
+            this.ListOfStudentsButton.Text = "List Of Students";
+            this.ListOfStudentsButton.UseVisualStyleBackColor = true;
+            this.ListOfStudentsButton.Click += new System.EventHandler(this.ListOfStudents);
             // 
             // AddStudentButton
             // 
@@ -155,7 +156,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ListOfLoansButton);
             this.Controls.Add(this.AddLoanButton);
-            this.Controls.Add(this.ListOfStudents);
+            this.Controls.Add(this.ListOfStudentsButton);
             this.Controls.Add(this.AddStudentButton);
             this.Controls.Add(this.ListOfPublishersButton);
             this.Controls.Add(this.AddPublisherButton);
@@ -178,7 +179,7 @@
         private System.Windows.Forms.Button ListOfBooksButton;
         private System.Windows.Forms.Button ListOfAuthorsButton;
         private System.Windows.Forms.Button AddAuthorButton;
-        private System.Windows.Forms.Button ListOfStudents;
+        private System.Windows.Forms.Button ListOfStudentsButton;
         private System.Windows.Forms.Button AddStudentButton;
         private System.Windows.Forms.Button ListOfPublishersButton;
         private System.Windows.Forms.Button AddPublisherButton;
