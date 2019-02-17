@@ -108,6 +108,7 @@
             this.AddStudentButton.TabIndex = 7;
             this.AddStudentButton.Text = "Add Student";
             this.AddStudentButton.UseVisualStyleBackColor = true;
+            this.AddStudentButton.Click += new System.EventHandler(this.AddStudent);
             // 
             // ListOfPublishersButton
             // 

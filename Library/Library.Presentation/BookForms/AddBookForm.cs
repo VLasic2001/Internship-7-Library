@@ -96,13 +96,10 @@ namespace Library.Presentation.BookForms
                 return false;
             }
 
-            if (Publisher == null)
-            {
-                MessageBox.Show(@"Select a publisher first", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            
-            return true;
+            if (Publisher != null) return true;
+            MessageBox.Show(@"Select a publisher first", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+
         }
 
         public void CreateAndAddBook()

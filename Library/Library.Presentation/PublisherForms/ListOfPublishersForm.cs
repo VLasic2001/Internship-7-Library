@@ -64,6 +64,11 @@ namespace Library.Presentation.PublisherForms
 
         private void Edit(object sender, EventArgs e)
         {
+            if (PublishersListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the publisher you want to edit", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var editPublisher = new EditPublisherForm((Publisher)PublishersListBox.SelectedItem, _context);
             editPublisher.ShowDialog();
             UpdateList();

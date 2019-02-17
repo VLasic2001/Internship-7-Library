@@ -14,6 +14,7 @@ using Library.Data.Utility;
 using Library.Presentation.AuthorForms;
 using Library.Presentation.BookForms;
 using Library.Presentation.PublisherForms;
+using Library.Presentation.StudentForms;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 
@@ -66,6 +67,12 @@ namespace Library.Presentation
         {
             var listOfPublishers = new ListOfPublishersForm();
             listOfPublishers.ShowDialog();
+        }
+
+        private void AddStudent(object sender, EventArgs e)
+        {
+            var addStudent = new AddStudentForm();
+            addStudent.ShowDialog();
         }
     }
 }

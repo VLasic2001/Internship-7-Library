@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Library.Data.Enums;
+using Library.Data.Models;
 
-namespace Library.Data.Models
+namespace Library.Data.Entities.Models
 {
     public class Student
     {
@@ -17,5 +15,19 @@ namespace Library.Data.Models
         public string Class { get; set; }
 
         private ICollection<Loan> Loans { get; set; }
+
+        public Student()
+        {
+            
+        }
+
+        public Student(string firstName, string lastName, DateTime dateOfBirth, Gender gender, string studentClass)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            DateOfBirth = dateOfBirth;
+            Gender = gender;
+            Class = studentClass;
+        }
     }
 }

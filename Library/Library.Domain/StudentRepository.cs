@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.Data.Entities;
+using Library.Data.Entities.Models;
 using Library.Data.Models;
 
 namespace Library.Domain
@@ -20,6 +21,12 @@ namespace Library.Domain
         public Student GetStudent(int id)
         {
             return _context.Students.Find(id);
+        }
+
+        public void AddStudent(Student studentToAdd)
+        {
+            _context.Students.Add(studentToAdd);
+            _context.SaveChanges();
         }
     }
 }
