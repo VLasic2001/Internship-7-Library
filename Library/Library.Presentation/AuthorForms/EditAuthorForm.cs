@@ -41,7 +41,7 @@ namespace Library.Presentation.AuthorForms
 
         public bool IsInCorrectFormat()
         {
-            if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text) ||
+            if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text) &&
                 !string.IsNullOrWhiteSpace(LastNameTextBox.Text)) return true;
             MessageBox.Show(@"Name cannot be empty", @"Name empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;

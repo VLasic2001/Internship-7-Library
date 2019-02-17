@@ -64,6 +64,11 @@ namespace Library.Presentation.AuthorForms
 
         private void Edit(object sender, EventArgs e)
         {
+            if (AuthorsListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the author you want to edit", @"No author selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var editAuthor = new EditAuthorForm((Author)AuthorsListBox.SelectedItem, _context);
             editAuthor.ShowDialog();
             UpdateList();
