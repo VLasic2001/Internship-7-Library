@@ -64,7 +64,9 @@ namespace Library.Presentation.PublisherForms
 
         private void Edit(object sender, EventArgs e)
         {
-
+            var editPublisher = new EditPublisherForm((Publisher)PublishersListBox.SelectedItem, _context);
+            editPublisher.ShowDialog();
+            UpdateList();
         }
     }
 }
