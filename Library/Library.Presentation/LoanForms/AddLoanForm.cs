@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities.Models;
+using Library.Data.Models;
+using Library.Domain;
 using Library.Presentation.Popups;
 
 namespace Library.Presentation.LoanForms
@@ -16,10 +18,13 @@ namespace Library.Presentation.LoanForms
     {
         private Book _book { get; set; }
         private Student _student { get; set; }
+        public DateTime? ReturnDate { get; set; }
+        private LoanRepository _loanRepository { get; set; }
 
         public AddLoanForm()
         {
             InitializeComponent();
+            _loanRepository = new LoanRepository();
         }
 
         private void IsBookReturnedCheck(object sender, EventArgs e)
@@ -60,6 +65,48 @@ namespace Library.Presentation.LoanForms
                 _student = selectStudent.Student;
                 SelectedStudentLabel.Text = _student.ToString();
             }
+        }
+
+        private void Save(object sender, EventArgs e)
+        {
+            if (!IsInValidFormat()) return;
+            CreateAndAddLoan();
+            MessageBox.Show(@"Student successfully added", @"Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Close();
+        }
+
+        public bool IsInValidFormat()
+        {
+            if (_book == null)
+            {
+                MessageBox.Show(@"No book selected, please select a book and try again", @"No book selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (_student == null)
+            {
+                MessageBox.Show(@"No student selected, please select a student and try again", @"No student selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (IsBookReturnedCheckBox.Checked)
+            {
+                if (ReturnDateDateTimePicker.Value < LoanDateDateTimePicker.Value)
+                {
+                    MessageBox.Show(@"Loan date cannot be later than the return date",
+                        @"Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                ReturnDate = ReturnDateDateTimePicker.Value;
+                return true;
+            }
+
+            ReturnDate = null;
+            return true;
+        }
+
+        public void CreateAndAddLoan()
+        {
+            _loanRepository.AddLoan(new Loan(_book.BookId, _student.StudentId, LoanDateDateTimePicker.Value, ReturnDate));
         }
     }
 }

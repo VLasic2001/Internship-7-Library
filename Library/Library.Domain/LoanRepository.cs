@@ -21,5 +21,11 @@ namespace Library.Domain
         {
             return _context.Loans.Find(id);
         }
+
+        public void AddLoan(Loan loanToAdd)
+        {
+            _context.Loans.Add(loanToAdd);
+            _context.SaveChanges();
+        }
     }
 }

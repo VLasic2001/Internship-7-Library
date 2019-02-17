@@ -16,5 +16,18 @@ namespace Library.Data.Models
         public int StudentId { get; set; }
         public DateTime LoanDate { get; set; }
         public DateTime? ReturnDate { get; set; }
+
+        public Loan()
+        {
+
+        }
+
+        public Loan(int bookId, int studentId, DateTime loanDate, DateTime? returnDate)
+        {
+            BookId = bookId;
+            StudentId = studentId;
+            LoanDate = loanDate;
+            ReturnDate = returnDate;
+        }
     }
 }
