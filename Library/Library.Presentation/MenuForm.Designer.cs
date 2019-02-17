@@ -117,6 +117,7 @@
             this.ListOfPublishersButton.TabIndex = 6;
             this.ListOfPublishersButton.Text = "List Of Publishers";
             this.ListOfPublishersButton.UseVisualStyleBackColor = true;
+            this.ListOfPublishersButton.Click += new System.EventHandler(this.ListOfPublishers);
             // 
             // AddPublisherButton
             // 

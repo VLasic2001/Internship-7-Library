@@ -61,5 +61,11 @@ namespace Library.Presentation
             var addPublisher = new AddPublisherForm();
             addPublisher.ShowDialog();
         }
+
+        private void ListOfPublishers(object sender, EventArgs e)
+        {
+            var listOfPublishers = new ListOfPublishersForm();
+            listOfPublishers.ShowDialog();
+        }
     }
 }
