@@ -57,7 +57,9 @@ namespace Library.Presentation.AuthorForms
                 MessageBox.Show(@"You must select the author you want to see the details of", @"No author selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            var authorDetails = new AuthorDetailsForm((Author)AuthorsListBox.SelectedItem);
+            authorDetails.ShowDialog();
+            UpdateList();
         }
 
         private void Edit(object sender, EventArgs e)
