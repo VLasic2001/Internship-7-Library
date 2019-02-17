@@ -88,6 +88,7 @@
             this.AddAuthorButton.TabIndex = 3;
             this.AddAuthorButton.Text = "Add Author";
             this.AddAuthorButton.UseVisualStyleBackColor = true;
+            this.AddAuthorButton.Click += new System.EventHandler(this.AddAuthor);
             // 
             // ListOfStudents
             // 

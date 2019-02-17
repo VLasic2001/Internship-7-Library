@@ -17,5 +17,16 @@ namespace Library.Data.Entities.Models
         {
             return Books.Count > 0 ? $"{FirstName} {LastName} - {Books.Count} books ({Books.FirstOrDefault()}...)" : $"{FirstName} {LastName}";
         }
+
+        public Author()
+        {
+
+        }
+
+        public Author(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }

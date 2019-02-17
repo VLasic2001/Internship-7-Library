@@ -106,6 +106,7 @@ namespace Library.Presentation.BookForms
         {
             if (!IsInCorrectFormat()) return;
             EditBook();
+            MessageBox.Show(@"Book successfully edited", @"Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 

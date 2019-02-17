@@ -28,5 +28,11 @@ namespace Library.Domain
         {
             return _context.Authors.Include(author => author.Books).ToList();
         }
+
+        public void AddAuthor(Author authorToAdd)
+        {
+            _context.Authors.Add(authorToAdd);
+            _context.SaveChanges();
+        }
     }
 }

@@ -72,6 +72,7 @@ namespace Library.Presentation.BookForms
         {
             if (!IsInCorrectFormat()) return;
             CreateAndAddBook();
+            MessageBox.Show(@"Book successfully added", @"Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 
@@ -106,9 +107,9 @@ namespace Library.Presentation.BookForms
 
         public void CreateAndAddBook()
         {
-            Book = new Book(BookNameTextBox.Text, decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
-                (Genre)GenreComboBox.SelectedIndex, Author, Publisher);
-            BookRepository.AddBook(Book);
+
+            BookRepository.AddBook(new Book(BookNameTextBox.Text, decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
+                (Genre)GenreComboBox.SelectedIndex, Author, Publisher));
         }
 
         private void Close(object sender, EventArgs e)

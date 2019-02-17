@@ -11,6 +11,7 @@ using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Data.Models;
 using Library.Data.Utility;
+using Library.Presentation.AuthorForms;
 using Library.Presentation.BookForms;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,12 @@ namespace Library.Presentation
         {
             var listOfBooks = new ListOfBooksForm();
             listOfBooks.ShowDialog();
+        }
+
+        private void AddAuthor(object sender, EventArgs e)
+        {
+            var addAuthor = new AddAuthorForm();
+            addAuthor.ShowDialog();
         }
     }
 }
