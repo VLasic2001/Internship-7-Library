@@ -39,7 +39,15 @@ namespace Library.Presentation.AuthorForms
 
         private void Delete(object sender, EventArgs e)
         {
-
+            if (AuthorsListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the author you want to delete", @"No author selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var selection = (Author)AuthorsListBox.SelectedItem;
+            if (MessageBox.Show($@"Are you sure you want to delete {selection.FirstName} {selection.LastName}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+            _authorRepository.DeleteAuthor(selection);
+            UpdateList();
         }
 
         private void Details(object sender, EventArgs e)
