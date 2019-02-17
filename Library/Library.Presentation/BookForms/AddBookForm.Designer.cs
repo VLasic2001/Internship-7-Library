@@ -41,7 +41,10 @@
             this.GenreComboBox = new System.Windows.Forms.ComboBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
+            this.NumberOfCopiesLabel = new System.Windows.Forms.Label();
+            this.NumberOfCopiesNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.NumberOfPagesNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberOfCopiesNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -58,7 +61,7 @@
             // 
             this.BookNameTextBox.Location = new System.Drawing.Point(186, 104);
             this.BookNameTextBox.Name = "BookNameTextBox";
-            this.BookNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.BookNameTextBox.Size = new System.Drawing.Size(109, 20);
             this.BookNameTextBox.TabIndex = 1;
             // 
             // BookNameLabel
@@ -72,7 +75,7 @@
             // 
             // SelectAuthorButton
             // 
-            this.SelectAuthorButton.Location = new System.Drawing.Point(47, 231);
+            this.SelectAuthorButton.Location = new System.Drawing.Point(47, 265);
             this.SelectAuthorButton.Name = "SelectAuthorButton";
             this.SelectAuthorButton.Size = new System.Drawing.Size(115, 23);
             this.SelectAuthorButton.TabIndex = 3;
@@ -84,7 +87,7 @@
             // 
             this.SelectedAuthorLabel.AutoSize = true;
             this.SelectedAuthorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.SelectedAuthorLabel.Location = new System.Drawing.Point(183, 234);
+            this.SelectedAuthorLabel.Location = new System.Drawing.Point(183, 268);
             this.SelectedAuthorLabel.Name = "SelectedAuthorLabel";
             this.SelectedAuthorLabel.Size = new System.Drawing.Size(131, 17);
             this.SelectedAuthorLabel.TabIndex = 4;
@@ -94,7 +97,7 @@
             // 
             this.SelectedPublisherLabel.AutoSize = true;
             this.SelectedPublisherLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.SelectedPublisherLabel.Location = new System.Drawing.Point(183, 278);
+            this.SelectedPublisherLabel.Location = new System.Drawing.Point(183, 312);
             this.SelectedPublisherLabel.Name = "SelectedPublisherLabel";
             this.SelectedPublisherLabel.Size = new System.Drawing.Size(148, 17);
             this.SelectedPublisherLabel.TabIndex = 6;
@@ -102,7 +105,7 @@
             // 
             // SelectPublisherButton
             // 
-            this.SelectPublisherButton.Location = new System.Drawing.Point(47, 275);
+            this.SelectPublisherButton.Location = new System.Drawing.Point(47, 309);
             this.SelectPublisherButton.Name = "SelectPublisherButton";
             this.SelectPublisherButton.Size = new System.Drawing.Size(115, 23);
             this.SelectPublisherButton.TabIndex = 5;
@@ -130,6 +133,11 @@
             this.NumberOfPagesNumericUpDown.Name = "NumberOfPagesNumericUpDown";
             this.NumberOfPagesNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.NumberOfPagesNumericUpDown.TabIndex = 8;
+            this.NumberOfPagesNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // GenreLabel
             // 
@@ -169,11 +177,39 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.Close);
             // 
+            // NumberOfCopiesLabel
+            // 
+            this.NumberOfCopiesLabel.AutoSize = true;
+            this.NumberOfCopiesLabel.Location = new System.Drawing.Point(66, 231);
+            this.NumberOfCopiesLabel.Name = "NumberOfCopiesLabel";
+            this.NumberOfCopiesLabel.Size = new System.Drawing.Size(96, 13);
+            this.NumberOfCopiesLabel.TabIndex = 13;
+            this.NumberOfCopiesLabel.Text = "Number Of Copies:";
+            // 
+            // NumberOfCopiesNumericUpDown
+            // 
+            this.NumberOfCopiesNumericUpDown.Location = new System.Drawing.Point(186, 229);
+            this.NumberOfCopiesNumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.NumberOfCopiesNumericUpDown.Name = "NumberOfCopiesNumericUpDown";
+            this.NumberOfCopiesNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.NumberOfCopiesNumericUpDown.TabIndex = 14;
+            this.NumberOfCopiesNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // AddBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.NumberOfCopiesNumericUpDown);
+            this.Controls.Add(this.NumberOfCopiesLabel);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.GenreComboBox);
@@ -190,6 +226,7 @@
             this.Name = "AddBookForm";
             this.Text = "AddBookForm";
             ((System.ComponentModel.ISupportInitialize)(this.NumberOfPagesNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberOfCopiesNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +247,7 @@
         private System.Windows.Forms.ComboBox GenreComboBox;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Label NumberOfCopiesLabel;
+        private System.Windows.Forms.NumericUpDown NumberOfCopiesNumericUpDown;
     }
 }

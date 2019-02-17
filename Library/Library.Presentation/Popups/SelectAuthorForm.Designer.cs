@@ -43,7 +43,7 @@
             // AuthorsListBox
             // 
             this.AuthorsListBox.FormattingEnabled = true;
-            this.AuthorsListBox.Location = new System.Drawing.Point(29, 56);
+            this.AuthorsListBox.Location = new System.Drawing.Point(27, 70);
             this.AuthorsListBox.Name = "AuthorsListBox";
             this.AuthorsListBox.Size = new System.Drawing.Size(347, 368);
             this.AuthorsListBox.TabIndex = 0;
@@ -60,21 +60,21 @@
             // 
             // FirstNameTextBox
             // 
-            this.FirstNameTextBox.Location = new System.Drawing.Point(553, 81);
+            this.FirstNameTextBox.Location = new System.Drawing.Point(551, 95);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.FirstNameTextBox.TabIndex = 2;
             // 
             // LastNameTextBox
             // 
-            this.LastNameTextBox.Location = new System.Drawing.Point(553, 122);
+            this.LastNameTextBox.Location = new System.Drawing.Point(551, 136);
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.LastNameTextBox.TabIndex = 3;
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(671, 99);
+            this.SearchButton.Location = new System.Drawing.Point(669, 113);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(75, 23);
             this.SearchButton.TabIndex = 4;
@@ -85,7 +85,7 @@
             // FirstNameLabel
             // 
             this.FirstNameLabel.AutoSize = true;
-            this.FirstNameLabel.Location = new System.Drawing.Point(454, 84);
+            this.FirstNameLabel.Location = new System.Drawing.Point(452, 98);
             this.FirstNameLabel.Name = "FirstNameLabel";
             this.FirstNameLabel.Size = new System.Drawing.Size(93, 13);
             this.FirstNameLabel.TabIndex = 5;
@@ -94,7 +94,7 @@
             // LastNameLabel
             // 
             this.LastNameLabel.AutoSize = true;
-            this.LastNameLabel.Location = new System.Drawing.Point(454, 125);
+            this.LastNameLabel.Location = new System.Drawing.Point(452, 139);
             this.LastNameLabel.Name = "LastNameLabel";
             this.LastNameLabel.Size = new System.Drawing.Size(93, 13);
             this.LastNameLabel.TabIndex = 6;
@@ -103,7 +103,7 @@
             // TipLabel
             // 
             this.TipLabel.AutoSize = true;
-            this.TipLabel.Location = new System.Drawing.Point(454, 167);
+            this.TipLabel.Location = new System.Drawing.Point(452, 181);
             this.TipLabel.Name = "TipLabel";
             this.TipLabel.Size = new System.Drawing.Size(329, 13);
             this.TipLabel.TabIndex = 7;
@@ -111,7 +111,7 @@
             // 
             // SelectButton
             // 
-            this.SelectButton.Location = new System.Drawing.Point(477, 327);
+            this.SelectButton.Location = new System.Drawing.Point(475, 341);
             this.SelectButton.Name = "SelectButton";
             this.SelectButton.Size = new System.Drawing.Size(93, 46);
             this.SelectButton.TabIndex = 8;
@@ -121,7 +121,7 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(601, 327);
+            this.CloseButton.Location = new System.Drawing.Point(599, 341);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(96, 46);
             this.CloseButton.TabIndex = 9;

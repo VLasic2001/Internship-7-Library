@@ -37,18 +37,20 @@ namespace Library.Data.Utility
                 context.Books.AddRange(
                     new Book
                     {
-                        Name = "Treasure Island", NumberOfPages = 143, Genre = Genre.Adventure, AuthorId = 1,
+                        Name = "Treasure Island", NumberOfPages = 143, Genre = Genre.Adventure,
+                        NumberOfCopies = 10, AuthorId = 1,
                         PublisherId = 1
                     },
                     new Book
                     {
-                        Name = "Love Story", NumberOfPages = 657, Genre = Genre.Romance, AuthorId = 2,
+                        Name = "Love Story", NumberOfPages = 657, Genre = Genre.Romance,
+                        NumberOfCopies = 15, AuthorId = 2,
                         PublisherId = 2
                     },
                     new Book
                     {
-                        Name = "Dracula", NumberOfPages = 143, Genre = Genre.Horror, AuthorId = 3,
-                        PublisherId = 3
+                        Name = "Dracula", NumberOfPages = 143, Genre = Genre.Horror,
+                        NumberOfCopies = 30, AuthorId = 3, PublisherId = 3
                     });
             }
 

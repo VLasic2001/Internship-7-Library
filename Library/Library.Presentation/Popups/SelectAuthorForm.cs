@@ -52,7 +52,7 @@ namespace Library.Presentation.Popups
                     }
                     else if (string.IsNullOrWhiteSpace(LastNameTextBox.Text))
                     {
-                        if (author.LastName.Contains(FirstNameTextBox.Text))
+                        if (author.FirstName.Contains(FirstNameTextBox.Text))
                         {
                             searchAuthorList.Add(author);
                         }

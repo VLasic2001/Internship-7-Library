@@ -61,8 +61,9 @@ namespace Library.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     NumberOfPages = table.Column<int>(nullable: false),
                     Genre = table.Column<int>(nullable: false),
-                    AuthorId = table.Column<int>(nullable: true),
-                    PublisherId = table.Column<int>(nullable: true)
+                    NumberOfCopies = table.Column<int>(nullable: false),
+                    AuthorId = table.Column<int>(nullable: false),
+                    PublisherId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,13 +73,13 @@ namespace Library.Data.Migrations
                         column: x => x.AuthorId,
                         principalTable: "Authors",
                         principalColumn: "AuthorId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Books_Publishers_PublisherId",
                         column: x => x.PublisherId,
                         principalTable: "Publishers",
                         principalColumn: "PublisherId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

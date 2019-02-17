@@ -90,6 +90,12 @@ namespace Library.Presentation.BookForms
                 return false;
             }
 
+            if (!int.TryParse(Convert.ToInt32(NumberOfCopiesNumericUpDown.Value).ToString(), out var resultCopies))
+            {
+                MessageBox.Show(@"Number of copies must be a number", @"Incorrect format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             if (Author == null)
             {
                 MessageBox.Show(@"Select an author first", @"No Author selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -115,6 +121,7 @@ namespace Library.Presentation.BookForms
             _context.Books.Find(_book.BookId).Name = BookNameTextBox.Text;
             _context.Books.Find(_book.BookId).NumberOfPages = decimal.ToInt32(NumberOfPagesNumericUpDown.Value);
             _context.Books.Find(_book.BookId).Genre = (Genre)GenreComboBox.SelectedIndex;
+            _context.Books.Find(_book.BookId).NumberOfCopies = decimal.ToInt32(NumberOfCopiesNumericUpDown.Value);
             _context.Books.Find(_book.BookId).AuthorId = Author.AuthorId;
             _context.Books.Find(_book.BookId).PublisherId = Publisher.PublisherId;
             _context.SaveChanges();

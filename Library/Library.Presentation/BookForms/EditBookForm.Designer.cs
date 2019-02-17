@@ -41,7 +41,10 @@
             this.BookNameLabel = new System.Windows.Forms.Label();
             this.BookNameTextBox = new System.Windows.Forms.TextBox();
             this.TitleLabel = new System.Windows.Forms.Label();
+            this.NumberOfCopiesNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.NumberOfCopiesLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NumberOfPagesNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberOfCopiesNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -106,7 +109,7 @@
             // 
             this.SelectedPublisherLabel.AutoSize = true;
             this.SelectedPublisherLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.SelectedPublisherLabel.Location = new System.Drawing.Point(205, 278);
+            this.SelectedPublisherLabel.Location = new System.Drawing.Point(205, 321);
             this.SelectedPublisherLabel.Name = "SelectedPublisherLabel";
             this.SelectedPublisherLabel.Size = new System.Drawing.Size(148, 17);
             this.SelectedPublisherLabel.TabIndex = 19;
@@ -114,7 +117,7 @@
             // 
             // SelectPublisherButton
             // 
-            this.SelectPublisherButton.Location = new System.Drawing.Point(69, 275);
+            this.SelectPublisherButton.Location = new System.Drawing.Point(69, 318);
             this.SelectPublisherButton.Name = "SelectPublisherButton";
             this.SelectPublisherButton.Size = new System.Drawing.Size(115, 23);
             this.SelectPublisherButton.TabIndex = 18;
@@ -126,7 +129,7 @@
             // 
             this.SelectedAuthorLabel.AutoSize = true;
             this.SelectedAuthorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.SelectedAuthorLabel.Location = new System.Drawing.Point(205, 234);
+            this.SelectedAuthorLabel.Location = new System.Drawing.Point(205, 277);
             this.SelectedAuthorLabel.Name = "SelectedAuthorLabel";
             this.SelectedAuthorLabel.Size = new System.Drawing.Size(131, 17);
             this.SelectedAuthorLabel.TabIndex = 17;
@@ -134,7 +137,7 @@
             // 
             // SelectAuthorButton
             // 
-            this.SelectAuthorButton.Location = new System.Drawing.Point(69, 231);
+            this.SelectAuthorButton.Location = new System.Drawing.Point(69, 274);
             this.SelectAuthorButton.Name = "SelectAuthorButton";
             this.SelectAuthorButton.Size = new System.Drawing.Size(115, 23);
             this.SelectAuthorButton.TabIndex = 16;
@@ -168,11 +171,34 @@
             this.TitleLabel.TabIndex = 13;
             this.TitleLabel.Text = "Edit Book";
             // 
+            // NumberOfCopiesNumericUpDown
+            // 
+            this.NumberOfCopiesNumericUpDown.Location = new System.Drawing.Point(208, 234);
+            this.NumberOfCopiesNumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.NumberOfCopiesNumericUpDown.Name = "NumberOfCopiesNumericUpDown";
+            this.NumberOfCopiesNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.NumberOfCopiesNumericUpDown.TabIndex = 27;
+            // 
+            // NumberOfCopiesLabel
+            // 
+            this.NumberOfCopiesLabel.AutoSize = true;
+            this.NumberOfCopiesLabel.Location = new System.Drawing.Point(88, 236);
+            this.NumberOfCopiesLabel.Name = "NumberOfCopiesLabel";
+            this.NumberOfCopiesLabel.Size = new System.Drawing.Size(96, 13);
+            this.NumberOfCopiesLabel.TabIndex = 26;
+            this.NumberOfCopiesLabel.Text = "Number Of Copies:";
+            // 
             // EditBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.NumberOfCopiesNumericUpDown);
+            this.Controls.Add(this.NumberOfCopiesLabel);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.GenreComboBox);
@@ -189,6 +215,7 @@
             this.Name = "EditBookForm";
             this.Text = "EditBookForm";
             ((System.ComponentModel.ISupportInitialize)(this.NumberOfPagesNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberOfCopiesNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +236,7 @@
         private System.Windows.Forms.Label BookNameLabel;
         private System.Windows.Forms.TextBox BookNameTextBox;
         private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.NumericUpDown NumberOfCopiesNumericUpDown;
+        private System.Windows.Forms.Label NumberOfCopiesLabel;
     }
 }

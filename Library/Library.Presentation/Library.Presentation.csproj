@@ -162,6 +162,12 @@
     <Compile Include="BookForms\ListOfBooksForm.Designer.cs">
       <DependentUpon>ListOfBooksForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoanForms\AddLoanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoanForms\AddLoanForm.Designer.cs">
+      <DependentUpon>AddLoanForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,11 +180,23 @@
     <Compile Include="Popups\SelectAuthorForm.Designer.cs">
       <DependentUpon>SelectAuthorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popups\SelectBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\SelectBookForm.Designer.cs">
+      <DependentUpon>SelectBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popups\SelectPublisherForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Popups\SelectPublisherForm.Designer.cs">
       <DependentUpon>SelectPublisherForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\SelectStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\SelectStudentForm.Designer.cs">
+      <DependentUpon>SelectStudentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,14 +272,23 @@
     <EmbeddedResource Include="BookForms\ListOfBooksForm.resx">
       <DependentUpon>ListOfBooksForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoanForms\AddLoanForm.resx">
+      <DependentUpon>AddLoanForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popups\SelectAuthorForm.resx">
       <DependentUpon>SelectAuthorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Popups\SelectBookForm.resx">
+      <DependentUpon>SelectBookForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Popups\SelectPublisherForm.resx">
       <DependentUpon>SelectPublisherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\SelectStudentForm.resx">
+      <DependentUpon>SelectStudentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

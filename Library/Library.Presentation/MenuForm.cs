@@ -13,6 +13,7 @@ using Library.Data.Models;
 using Library.Data.Utility;
 using Library.Presentation.AuthorForms;
 using Library.Presentation.BookForms;
+using Library.Presentation.LoanForms;
 using Library.Presentation.PublisherForms;
 using Library.Presentation.StudentForms;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -79,6 +80,12 @@ namespace Library.Presentation
         {
             var listOfStudents = new ListOfStudentsForm();
             listOfStudents.ShowDialog();
+        }
+
+        private void AddLoan(object sender, EventArgs e)
+        {
+            var addLoan = new AddLoanForm();
+            addLoan.ShowDialog();
         }
     }
 }

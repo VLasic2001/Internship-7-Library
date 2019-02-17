@@ -35,7 +35,6 @@ namespace Library.Presentation.BookForms
         public void SetupForm()
         {
             GenreComboBox.DataSource = Enum.GetValues(typeof(Genre));
-            NumberOfPagesNumericUpDown.Value = 1;
         }
 
         private void SelectAuthor(object sender, EventArgs e)
@@ -84,9 +83,15 @@ namespace Library.Presentation.BookForms
                 return false;
             }
 
-            if (!int.TryParse(Convert.ToInt32(NumberOfPagesNumericUpDown.Value).ToString(), out var result))
+            if (!int.TryParse(Convert.ToInt32(NumberOfPagesNumericUpDown.Value).ToString(), out var resultPages))
             {
                 MessageBox.Show(@"Number of pages must be a number", @"Incorrect format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!int.TryParse(Convert.ToInt32(NumberOfCopiesNumericUpDown.Value).ToString(), out var resultCopies))
+            {
+                MessageBox.Show(@"Number of copies must be a number", @"Incorrect format", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -106,7 +111,7 @@ namespace Library.Presentation.BookForms
         {
 
             BookRepository.AddBook(new Book(BookNameTextBox.Text, decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
-                (Genre)GenreComboBox.SelectedIndex, Author, Publisher));
+                (Genre)GenreComboBox.SelectedIndex, decimal.ToInt32(NumberOfCopiesNumericUpDown.Value), Author, Publisher));
         }
 
         private void Close(object sender, EventArgs e)

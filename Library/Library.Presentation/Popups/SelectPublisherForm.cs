@@ -16,12 +16,13 @@ namespace Library.Presentation.Popups
 {
     public partial class SelectPublisherForm : Form
     {
-        private readonly PublisherRepository _publisherRepository = new PublisherRepository();
+        private PublisherRepository _publisherRepository { get; set; }
         public Publisher Publisher { get; set; }
 
         public SelectPublisherForm(LibraryContext context)
         {
             InitializeComponent();
+            _publisherRepository = new PublisherRepository();
             SetupList();
         }
 

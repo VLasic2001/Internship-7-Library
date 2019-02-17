@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20190216083123_InitialCreate")]
+    [Migration("20190217214432_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,21 +36,23 @@ namespace Library.Data.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("Library.Data.Models.Book", b =>
+            modelBuilder.Entity("Library.Data.Entities.Models.Book", b =>
                 {
                     b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId");
+                    b.Property<int>("AuthorId");
 
                     b.Property<int>("Genre");
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("NumberOfCopies");
+
                     b.Property<int>("NumberOfPages");
 
-                    b.Property<int?>("PublisherId");
+                    b.Property<int>("PublisherId");
 
                     b.HasKey("BookId");
 
@@ -59,6 +61,27 @@ namespace Library.Data.Migrations
                     b.HasIndex("PublisherId");
 
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("Library.Data.Entities.Models.Student", b =>
+                {
+                    b.Property<int>("StudentId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Class");
+
+                    b.Property<DateTime>("DateOfBirth");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<int>("Gender");
+
+                    b.Property<string>("LastName");
+
+                    b.HasKey("StudentId");
+
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("Library.Data.Models.Loan", b =>
@@ -97,47 +120,28 @@ namespace Library.Data.Migrations
                     b.ToTable("Publishers");
                 });
 
-            modelBuilder.Entity("Library.Data.Models.Student", b =>
-                {
-                    b.Property<int>("StudentId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Class");
-
-                    b.Property<DateTime>("DateOfBirth");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<int>("Gender");
-
-                    b.Property<string>("LastName");
-
-                    b.HasKey("StudentId");
-
-                    b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("Library.Data.Models.Book", b =>
+            modelBuilder.Entity("Library.Data.Entities.Models.Book", b =>
                 {
                     b.HasOne("Library.Data.Entities.Models.Author", "Author")
                         .WithMany("Books")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Library.Data.Models.Publisher", "Publisher")
                         .WithMany("Books")
-                        .HasForeignKey("PublisherId");
+                        .HasForeignKey("PublisherId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Library.Data.Models.Loan", b =>
                 {
-                    b.HasOne("Library.Data.Models.Book", "Book")
+                    b.HasOne("Library.Data.Entities.Models.Book", "Book")
                         .WithMany("Loans")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Library.Data.Models.Student", "Student")
-                        .WithMany()
+                    b.HasOne("Library.Data.Entities.Models.Student", "Student")
+                        .WithMany("Loans")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -148,6 +148,7 @@
             this.AddLoanButton.TabIndex = 9;
             this.AddLoanButton.Text = "Add Loan";
             this.AddLoanButton.UseVisualStyleBackColor = true;
+            this.AddLoanButton.Click += new System.EventHandler(this.AddLoan);
             // 
             // MenuForm
             // 

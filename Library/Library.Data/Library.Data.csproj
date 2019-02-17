@@ -133,9 +133,9 @@
     <Compile Include="Entities\Models\Loan.cs" />
     <Compile Include="Entities\Models\Publisher.cs" />
     <Compile Include="Entities\Models\Student.cs" />
-    <Compile Include="Migrations\20190216083123_InitialCreate.cs" />
-    <Compile Include="Migrations\20190216083123_InitialCreate.designer.cs">
-      <DependentUpon>20190216083123_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\20190217214432_InitialCreate.cs" />
+    <Compile Include="Migrations\20190217214432_InitialCreate.designer.cs">
+      <DependentUpon>20190217214432_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

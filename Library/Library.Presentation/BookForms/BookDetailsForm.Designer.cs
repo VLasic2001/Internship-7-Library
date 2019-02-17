@@ -36,13 +36,15 @@
             this.PublisherLabel = new System.Windows.Forms.Label();
             this.EditButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
+            this.NumberOfCopiesLabel = new System.Windows.Forms.Label();
+            this.NumberOfAvailableCopiesLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.TitleLabel.Location = new System.Drawing.Point(262, 9);
+            this.TitleLabel.Location = new System.Drawing.Point(233, 9);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(246, 46);
             this.TitleLabel.TabIndex = 0;
@@ -82,7 +84,7 @@
             // 
             this.AuthorLabel.AutoSize = true;
             this.AuthorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.AuthorLabel.Location = new System.Drawing.Point(48, 217);
+            this.AuthorLabel.Location = new System.Drawing.Point(48, 258);
             this.AuthorLabel.Name = "AuthorLabel";
             this.AuthorLabel.Size = new System.Drawing.Size(76, 24);
             this.AuthorLabel.TabIndex = 4;
@@ -92,7 +94,7 @@
             // 
             this.PublisherLabel.AutoSize = true;
             this.PublisherLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.PublisherLabel.Location = new System.Drawing.Point(52, 258);
+            this.PublisherLabel.Location = new System.Drawing.Point(48, 299);
             this.PublisherLabel.Name = "PublisherLabel";
             this.PublisherLabel.Size = new System.Drawing.Size(99, 24);
             this.PublisherLabel.TabIndex = 5;
@@ -100,7 +102,7 @@
             // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(457, 360);
+            this.EditButton.Location = new System.Drawing.Point(441, 252);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(94, 40);
             this.EditButton.TabIndex = 6;
@@ -110,7 +112,7 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(572, 360);
+            this.CloseButton.Location = new System.Drawing.Point(556, 252);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(95, 40);
             this.CloseButton.TabIndex = 7;
@@ -118,11 +120,33 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.Close);
             // 
+            // NumberOfCopiesLabel
+            // 
+            this.NumberOfCopiesLabel.AutoSize = true;
+            this.NumberOfCopiesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.NumberOfCopiesLabel.Location = new System.Drawing.Point(48, 216);
+            this.NumberOfCopiesLabel.Name = "NumberOfCopiesLabel";
+            this.NumberOfCopiesLabel.Size = new System.Drawing.Size(177, 24);
+            this.NumberOfCopiesLabel.TabIndex = 8;
+            this.NumberOfCopiesLabel.Text = "Number Of Copies: ";
+            // 
+            // NumberOfAvailableCopiesLabel
+            // 
+            this.NumberOfAvailableCopiesLabel.AutoSize = true;
+            this.NumberOfAvailableCopiesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.NumberOfAvailableCopiesLabel.Location = new System.Drawing.Point(431, 93);
+            this.NumberOfAvailableCopiesLabel.Name = "NumberOfAvailableCopiesLabel";
+            this.NumberOfAvailableCopiesLabel.Size = new System.Drawing.Size(253, 24);
+            this.NumberOfAvailableCopiesLabel.TabIndex = 9;
+            this.NumberOfAvailableCopiesLabel.Text = "Number Of Available Copies:";
+            // 
             // BookDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(734, 350);
+            this.Controls.Add(this.NumberOfAvailableCopiesLabel);
+            this.Controls.Add(this.NumberOfCopiesLabel);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.PublisherLabel);
@@ -148,5 +172,7 @@
         private System.Windows.Forms.Label PublisherLabel;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Label NumberOfCopiesLabel;
+        private System.Windows.Forms.Label NumberOfAvailableCopiesLabel;
     }
 }
