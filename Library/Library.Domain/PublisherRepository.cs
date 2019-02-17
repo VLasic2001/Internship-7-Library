@@ -33,5 +33,11 @@ namespace Library.Domain
             _context.Publishers.Add(publisherToAdd);
             _context.SaveChanges();
         }
+
+        public void DeletePublisher(Publisher publisherToAdd)
+        {
+            _context.Publishers.Remove(publisherToAdd);
+            _context.SaveChanges(); 
+        }
     }
 }

@@ -72,6 +72,7 @@
             this.DeleteButton.TabIndex = 8;
             this.DeleteButton.Text = "Delete Publisher";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.Delete);
             // 
             // EditButton
             // 
@@ -81,6 +82,7 @@
             this.EditButton.TabIndex = 7;
             this.EditButton.Text = "Edit Publisher";
             this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.Edit);
             // 
             // DetailsButton
             // 
@@ -90,6 +92,7 @@
             this.DetailsButton.TabIndex = 6;
             this.DetailsButton.Text = "Publisher Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
+            this.DetailsButton.Click += new System.EventHandler(this.Details);
             // 
             // ListOfPublishersForm
             // 

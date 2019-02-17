@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities;
+using Library.Data.Models;
 using Library.Domain;
 
 namespace Library.Presentation.PublisherForms
@@ -34,6 +35,29 @@ namespace Library.Presentation.PublisherForms
         private void Close(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Delete(object sender, EventArgs e)
+        {
+            if (PublishersListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the publisher you want to delete", @"No publisher selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var selection = (Publisher)PublishersListBox.SelectedItem;
+            if (MessageBox.Show($@"Are you sure you want to delete {selection.Name}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+            _publisherRepository.DeletePublisher(selection);
+            UpdateList();
+        }
+
+        private void Details(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Edit(object sender, EventArgs e)
+        {
+
         }
     }
 }
