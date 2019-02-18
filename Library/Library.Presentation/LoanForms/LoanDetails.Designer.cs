@@ -96,6 +96,7 @@
             this.EditButton.TabIndex = 5;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.Edit);
             // 
             // CloseButton
             // 
@@ -115,6 +116,7 @@
             this.ReturnBookButton.TabIndex = 7;
             this.ReturnBookButton.Text = "Return Book";
             this.ReturnBookButton.UseVisualStyleBackColor = true;
+            this.ReturnBookButton.Click += new System.EventHandler(this.ReturnBook);
             // 
             // LoanDetails
             // 

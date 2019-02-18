@@ -37,7 +37,7 @@ namespace Library.Domain
 
         public void DeleteAuthor(Author authorToDelete)
         {
-            _context.Authors.Remove(authorToDelete);
+            _context.Authors.Remove(GetAuthor(authorToDelete.AuthorId));
             _context.SaveChanges();
         }
     }

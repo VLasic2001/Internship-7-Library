@@ -38,7 +38,7 @@ namespace Library.Domain
 
         public void DeleteBook(Book bookToDelete)
         {
-            _context.Books.Remove(bookToDelete);
+            _context.Books.Remove(GetBook(bookToDelete.BookId));
             _context.SaveChanges();
         }
     }

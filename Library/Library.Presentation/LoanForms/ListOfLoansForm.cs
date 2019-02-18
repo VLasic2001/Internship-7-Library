@@ -30,7 +30,7 @@ namespace Library.Presentation.LoanForms
         {
             _loanRepository = new LoanRepository();
             LoansListBox.Items.Clear();
-            foreach (var loan in _loanRepository.GetAlLoans())
+            foreach (var loan in _loanRepository.GetAllLoans())
             {
                 loan.Book = _bookRepository.GetBook(loan.BookId);
                 loan.Student = _studentRepository.GetStudent(loan.StudentId);
@@ -51,7 +51,8 @@ namespace Library.Presentation.LoanForms
                 return;
             }
             var selection = (Loan)LoansListBox.SelectedItem;
-            if (MessageBox.Show($@"Are you sure you want to delete {selection.Book.Name} - {selection.Student.FirstName}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+            if (MessageBox.Show($@"Are you sure you want to delete {selection.Book.Name} - {selection.Student.FirstName} {selection.Student.LastName}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+            _loanRepository = new LoanRepository();
             _loanRepository.DeleteLoan(selection);
             UpdateList();
         }
@@ -65,6 +66,18 @@ namespace Library.Presentation.LoanForms
             }
             var loanDetails = new LoanDetails((Loan)LoansListBox.SelectedItem);
             loanDetails.ShowDialog();
+            UpdateList();
+        }
+
+        private void Edit(object sender, EventArgs e)
+        {
+            if (LoansListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the loan you want to edit", @"No loan selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var editLoan = new EditLoanForm((Loan)LoansListBox.SelectedItem);
+            editLoan.ShowDialog();
             UpdateList();
         }
     }

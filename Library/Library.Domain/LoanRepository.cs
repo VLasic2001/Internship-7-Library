@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.Data.Entities;
 using Library.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Domain
 {
@@ -15,14 +16,19 @@ namespace Library.Domain
             _context = new LibraryContext();
         }
 
-        private readonly LibraryContext _context;
+        private LibraryContext _context;
+
+        public Loan GetLoanWithInclude(int id)
+        {
+            return _context.Loans.Include(loan => loan.Book).Include(loan => loan.Student).FirstOrDefault(loan => loan.LoanId == id);
+        }
 
         public Loan GetLoan(int id)
         {
             return _context.Loans.Find(id);
         }
 
-        public List<Loan> GetAlLoans()
+        public List<Loan> GetAllLoans()
         {
             return _context.Loans.ToList();
         }
@@ -35,7 +41,15 @@ namespace Library.Domain
 
         public void DeleteLoan(Loan loanToDelete)
         {
-            _context.Loans.Remove(loanToDelete);
+            _context = new LibraryContext();
+            var loan = GetLoanWithInclude(loanToDelete.LoanId);
+            _context.Loans.Remove(loan);
+            _context.SaveChanges();
+        }
+
+        public void ReturnLoan(Loan loan, DateTime returnDate)
+        {
+            _context.Loans.Find(loan.LoanId).ReturnDate = returnDate;
             _context.SaveChanges();
         }
     }

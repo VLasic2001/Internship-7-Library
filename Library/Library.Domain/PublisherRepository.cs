@@ -36,7 +36,7 @@ namespace Library.Domain
 
         public void DeletePublisher(Publisher publisherToAdd)
         {
-            _context.Publishers.Remove(publisherToAdd);
+            _context.Publishers.Remove(GetPublisher(publisherToAdd.PublisherId));
             _context.SaveChanges(); 
         }
     }

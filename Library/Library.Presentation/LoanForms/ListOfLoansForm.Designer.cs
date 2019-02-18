@@ -64,6 +64,7 @@
             this.EditButton.TabIndex = 9;
             this.EditButton.Text = "Edit Loan";
             this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.Edit);
             // 
             // DetailsButton
             // 

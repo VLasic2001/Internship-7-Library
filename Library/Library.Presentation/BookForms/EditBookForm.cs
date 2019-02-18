@@ -118,12 +118,13 @@ namespace Library.Presentation.BookForms
 
         public void EditBook()
         {
-            _context.Books.Find(_book.BookId).Name = BookNameTextBox.Text;
-            _context.Books.Find(_book.BookId).NumberOfPages = decimal.ToInt32(NumberOfPagesNumericUpDown.Value);
-            _context.Books.Find(_book.BookId).Genre = (Genre)GenreComboBox.SelectedIndex;
-            _context.Books.Find(_book.BookId).NumberOfCopies = decimal.ToInt32(NumberOfCopiesNumericUpDown.Value);
-            _context.Books.Find(_book.BookId).AuthorId = Author.AuthorId;
-            _context.Books.Find(_book.BookId).PublisherId = Publisher.PublisherId;
+            var bookToEdit = _context.Books.Find(_book.BookId);
+            bookToEdit.Name = BookNameTextBox.Text;
+            bookToEdit.NumberOfPages = decimal.ToInt32(NumberOfPagesNumericUpDown.Value);
+            bookToEdit.Genre = (Genre)GenreComboBox.SelectedIndex;
+            bookToEdit.NumberOfCopies = decimal.ToInt32(NumberOfCopiesNumericUpDown.Value);
+            bookToEdit.AuthorId = Author.AuthorId;
+            bookToEdit.PublisherId = Publisher.PublisherId;
             _context.SaveChanges();
         }
     }

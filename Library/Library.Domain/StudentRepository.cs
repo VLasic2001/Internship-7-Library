@@ -38,7 +38,7 @@ namespace Library.Domain
 
         public void DeleteStudent(Student studentToRemove)
         {
-            _context.Students.Remove(studentToRemove);
+            _context.Students.Remove(GetStudent(studentToRemove.StudentId));
             _context.SaveChanges();
         }
     }

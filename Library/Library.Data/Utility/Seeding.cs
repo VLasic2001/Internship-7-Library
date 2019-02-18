@@ -61,20 +61,19 @@ namespace Library.Data.Utility
                     new Student
                     {
                         FirstName = "Toni", LastName = "Tonicevic",
-                        DateOfBirth = new DateTime(2001 / 06 / 10), Gender = Gender.Male, Class = "3.b"
+                        DateOfBirth = new DateTime(2001, 06, 10), Gender = Gender.Male, Class = "3.b"
                     },
                     new Student
                     {
-                        FirstName = "Ana", LastName = "Anic", DateOfBirth = new DateTime(2003 / 02 / 03),
+                        FirstName = "Ana", LastName = "Anic", DateOfBirth = new DateTime(2003, 02, 03),
                         Gender = Gender.Female, Class = "1.c"
                     },
                     new Student
                     {
                         FirstName = "Tomislav", LastName = "Tomicic",
-                        DateOfBirth = new DateTime(1997 / 12 / 31), Gender = Gender.Male, Class = "4.a"
+                        DateOfBirth = new DateTime(1997, 12, 31), Gender = Gender.Male, Class = "4.a"
                     });
             }
-
             context.SaveChanges();
         }
     }

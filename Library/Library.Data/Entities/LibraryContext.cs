@@ -26,5 +26,17 @@ namespace Library.Data.Entities
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["LibraryDatabase"].ConnectionString);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Loan>().HasOne(r => r.Book)
+                .WithMany(b => b.Loans)
+                .HasForeignKey(r => r.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Loan>().HasOne(r => r.Student)
+                .WithMany(s => s.Loans)
+                .HasForeignKey(s => s.StudentId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }
