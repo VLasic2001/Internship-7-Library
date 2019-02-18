@@ -51,8 +51,9 @@ namespace Library.Presentation.AuthorForms
 
         public void EditAuthor()
         {
-            _context.Authors.Find(_author.AuthorId).FirstName = FirstNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
-            _context.Authors.Find(_author.AuthorId).LastName = LastNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
+            var authorToEdit = _context.Authors.Find(_author.AuthorId);
+            authorToEdit.FirstName = FirstNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
+            authorToEdit.LastName = LastNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
             _context.SaveChanges();
         }
 

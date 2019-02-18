@@ -20,7 +20,7 @@ namespace Library.Presentation.BookForms
     public partial class AddBookForm : Form
     {
         private LibraryContext _context { get; set; }
-        public BookRepository BookRepository { get; set; }
+        private BookRepository _bookRepository { get; set; }
         public Book Book { get; set; }
         public Author Author { get; set; }
         public Publisher Publisher { get; set; }
@@ -29,7 +29,7 @@ namespace Library.Presentation.BookForms
         {
             InitializeComponent();
             _context = new LibraryContext();
-            BookRepository = new BookRepository();
+            _bookRepository = new BookRepository();
             SetupForm();
         }
 
@@ -110,7 +110,7 @@ namespace Library.Presentation.BookForms
 
         public void CreateAndAddBook()
         {
-            BookRepository.AddBook(new Book(BookNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters(), decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
+            _bookRepository.AddBook(new Book(BookNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters(), decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
                 (Genre)GenreComboBox.SelectedIndex, decimal.ToInt32(NumberOfCopiesNumericUpDown.Value), Author, Publisher));
         }
 

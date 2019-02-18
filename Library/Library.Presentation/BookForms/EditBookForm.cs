@@ -22,14 +22,15 @@ namespace Library.Presentation.BookForms
         private Book _book { get; set; }
         public Author Author { get; set; }
         public Publisher Publisher { get; set; }
-        private readonly LibraryContext _context = new LibraryContext();
-        public BookRepository BookRepository = new BookRepository();
+        private LibraryContext _context { get; set; }
+        private BookRepository _bookRepository { get; set; }
 
-        public EditBookForm(Book book)
+    public EditBookForm(Book book)
         {
-            
             InitializeComponent();
             _book = book;
+            _context = new LibraryContext();
+            _bookRepository = new BookRepository();
             UpdateForm();
         }
 

@@ -46,7 +46,7 @@
             // 
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.TitleLabel.Location = new System.Drawing.Point(315, 9);
+            this.TitleLabel.Location = new System.Drawing.Point(254, 9);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(119, 46);
             this.TitleLabel.TabIndex = 0;
@@ -54,7 +54,7 @@
             // 
             // AddBookButton
             // 
-            this.AddBookButton.Location = new System.Drawing.Point(42, 123);
+            this.AddBookButton.Location = new System.Drawing.Point(20, 123);
             this.AddBookButton.Name = "AddBookButton";
             this.AddBookButton.Size = new System.Drawing.Size(102, 33);
             this.AddBookButton.TabIndex = 1;
@@ -64,7 +64,7 @@
             // 
             // ListOfBooksButton
             // 
-            this.ListOfBooksButton.Location = new System.Drawing.Point(42, 163);
+            this.ListOfBooksButton.Location = new System.Drawing.Point(20, 163);
             this.ListOfBooksButton.Name = "ListOfBooksButton";
             this.ListOfBooksButton.Size = new System.Drawing.Size(102, 34);
             this.ListOfBooksButton.TabIndex = 2;
@@ -74,7 +74,7 @@
             // 
             // ListOfAuthorsButton
             // 
-            this.ListOfAuthorsButton.Location = new System.Drawing.Point(185, 163);
+            this.ListOfAuthorsButton.Location = new System.Drawing.Point(141, 163);
             this.ListOfAuthorsButton.Name = "ListOfAuthorsButton";
             this.ListOfAuthorsButton.Size = new System.Drawing.Size(102, 34);
             this.ListOfAuthorsButton.TabIndex = 4;
@@ -84,7 +84,7 @@
             // 
             // AddAuthorButton
             // 
-            this.AddAuthorButton.Location = new System.Drawing.Point(185, 123);
+            this.AddAuthorButton.Location = new System.Drawing.Point(141, 123);
             this.AddAuthorButton.Name = "AddAuthorButton";
             this.AddAuthorButton.Size = new System.Drawing.Size(102, 33);
             this.AddAuthorButton.TabIndex = 3;
@@ -94,7 +94,7 @@
             // 
             // ListOfStudentsButton
             // 
-            this.ListOfStudentsButton.Location = new System.Drawing.Point(466, 163);
+            this.ListOfStudentsButton.Location = new System.Drawing.Point(384, 163);
             this.ListOfStudentsButton.Name = "ListOfStudentsButton";
             this.ListOfStudentsButton.Size = new System.Drawing.Size(102, 34);
             this.ListOfStudentsButton.TabIndex = 8;
@@ -104,7 +104,7 @@
             // 
             // AddStudentButton
             // 
-            this.AddStudentButton.Location = new System.Drawing.Point(466, 123);
+            this.AddStudentButton.Location = new System.Drawing.Point(384, 123);
             this.AddStudentButton.Name = "AddStudentButton";
             this.AddStudentButton.Size = new System.Drawing.Size(102, 33);
             this.AddStudentButton.TabIndex = 7;
@@ -114,7 +114,7 @@
             // 
             // ListOfPublishersButton
             // 
-            this.ListOfPublishersButton.Location = new System.Drawing.Point(323, 163);
+            this.ListOfPublishersButton.Location = new System.Drawing.Point(262, 163);
             this.ListOfPublishersButton.Name = "ListOfPublishersButton";
             this.ListOfPublishersButton.Size = new System.Drawing.Size(102, 34);
             this.ListOfPublishersButton.TabIndex = 6;
@@ -124,7 +124,7 @@
             // 
             // AddPublisherButton
             // 
-            this.AddPublisherButton.Location = new System.Drawing.Point(323, 123);
+            this.AddPublisherButton.Location = new System.Drawing.Point(262, 123);
             this.AddPublisherButton.Name = "AddPublisherButton";
             this.AddPublisherButton.Size = new System.Drawing.Size(102, 33);
             this.AddPublisherButton.TabIndex = 5;
@@ -134,7 +134,7 @@
             // 
             // ListOfLoansButton
             // 
-            this.ListOfLoansButton.Location = new System.Drawing.Point(611, 163);
+            this.ListOfLoansButton.Location = new System.Drawing.Point(505, 163);
             this.ListOfLoansButton.Name = "ListOfLoansButton";
             this.ListOfLoansButton.Size = new System.Drawing.Size(102, 34);
             this.ListOfLoansButton.TabIndex = 10;
@@ -144,7 +144,7 @@
             // 
             // AddLoanButton
             // 
-            this.AddLoanButton.Location = new System.Drawing.Point(611, 123);
+            this.AddLoanButton.Location = new System.Drawing.Point(505, 123);
             this.AddLoanButton.Name = "AddLoanButton";
             this.AddLoanButton.Size = new System.Drawing.Size(102, 33);
             this.AddLoanButton.TabIndex = 9;
@@ -154,9 +154,9 @@
             // 
             // AddBookReportButton
             // 
-            this.AddBookReportButton.Location = new System.Drawing.Point(121, 342);
+            this.AddBookReportButton.Location = new System.Drawing.Point(262, 225);
             this.AddBookReportButton.Name = "AddBookReportButton";
-            this.AddBookReportButton.Size = new System.Drawing.Size(103, 36);
+            this.AddBookReportButton.Size = new System.Drawing.Size(102, 36);
             this.AddBookReportButton.TabIndex = 11;
             this.AddBookReportButton.Text = "Add Book Report";
             this.AddBookReportButton.UseVisualStyleBackColor = true;
@@ -166,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(637, 295);
             this.Controls.Add(this.AddBookReportButton);
             this.Controls.Add(this.ListOfLoansButton);
             this.Controls.Add(this.AddLoanButton);

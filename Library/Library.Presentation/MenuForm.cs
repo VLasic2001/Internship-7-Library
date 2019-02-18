@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Data.Models;
-using Library.Data.Utility;
 using Library.Presentation.AuthorForms;
 using Library.Presentation.BookForms;
 using Library.Presentation.Features;
@@ -99,6 +98,13 @@ namespace Library.Presentation
             listOfLoans.ShowDialog();
         }
 
+        private void AddBookReport(object sender, EventArgs e)
+        {
+            if (!AnyStudentsInDatabase(Context) || !AnyBooksInDatabase(Context)) return;
+            var addBookReport = new AddBookReportForm();
+            addBookReport.ShowDialog();
+        }
+
         public bool AnyAuthorsInDatabase(LibraryContext context)
         {
             if (context.Authors.Any()) return true;
@@ -132,12 +138,6 @@ namespace Library.Presentation
             if (context.Loans.Any()) return true;
             MessageBox.Show("Add a loan and try again", "No Loans In The Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
-        }
-
-        private void AddBookReport(object sender, EventArgs e)
-        {
-            var addBookReport = new AddBookReportForm();
-            addBookReport.ShowDialog();
         }
     }
 }

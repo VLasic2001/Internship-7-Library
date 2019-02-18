@@ -131,7 +131,7 @@ namespace Library.Presentation.LoanForms
             loanToEdit.BookId = Book.BookId;
             loanToEdit.StudentId = Student.StudentId;
             loanToEdit.LoanDate = LoanDateDateTimePicker.Value;
-            loanToEdit.ReturnDate = _loan.ReturnDate;
+            loanToEdit.ReturnDate = _loan.ReturnDate.Value;
             _context.SaveChanges();
         }
     }

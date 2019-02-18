@@ -143,7 +143,6 @@ namespace Library.Presentation.LoanForms
                 MessageBox.Show(@"Change the search inputs and try again", @"No loan matches the search inputs", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            LoansListBox.Items.Clear();
             if (searchLoansList.Count == ActiveListUpdate().Count)
             {
                 Loans = ActiveListUpdate();

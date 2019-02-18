@@ -18,7 +18,7 @@ namespace Library.Presentation.LoanForms
     {
         private Book _book { get; set; }
         private Student _student { get; set; }
-        public DateTime? ReturnDate { get; set; }
+        private DateTime? _returnDate { get; set; }
         private LoanRepository _loanRepository { get; set; }
 
         public AddLoanForm()
@@ -96,17 +96,17 @@ namespace Library.Presentation.LoanForms
                         @"Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                ReturnDate = ReturnDateDateTimePicker.Value;
+                _returnDate = ReturnDateDateTimePicker.Value;
                 return true;
             }
 
-            ReturnDate = null;
+            _returnDate = null;
             return true;
         }
 
         public void CreateAndAddLoan()
         {
-            _loanRepository.AddLoan(new Loan(_book.BookId, _student.StudentId, LoanDateDateTimePicker.Value, ReturnDate));
+            _loanRepository.AddLoan(new Loan(_book.BookId, _student.StudentId, LoanDateDateTimePicker.Value, _returnDate));
         }
     }
 }
