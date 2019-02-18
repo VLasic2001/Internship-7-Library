@@ -55,5 +55,17 @@ namespace Library.Presentation.LoanForms
             _loanRepository.DeleteLoan(selection);
             UpdateList();
         }
+
+        private void Details(object sender, EventArgs e)
+        {
+            if (LoansListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the loan you want to view the details of", @"No loan selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var loanDetails = new LoanDetails((Loan)LoansListBox.SelectedItem);
+            loanDetails.ShowDialog();
+            UpdateList();
+        }
     }
 }

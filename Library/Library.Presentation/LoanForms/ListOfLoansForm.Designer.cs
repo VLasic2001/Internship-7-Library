@@ -73,6 +73,7 @@
             this.DetailsButton.TabIndex = 8;
             this.DetailsButton.Text = "Loan Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
+            this.DetailsButton.Click += new System.EventHandler(this.Details);
             // 
             // LoansListBox
             // 
