@@ -13,6 +13,7 @@ using Library.Data.Models;
 using Library.Data.Utility;
 using Library.Presentation.AuthorForms;
 using Library.Presentation.BookForms;
+using Library.Presentation.Features;
 using Library.Presentation.LoanForms;
 using Library.Presentation.PublisherForms;
 using Library.Presentation.StudentForms;
@@ -137,6 +138,12 @@ namespace Library.Presentation
             if (context.Loans.Any()) return true;
             MessageBox.Show("Add a loan and try again", "No Loans In The Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
+        }
+
+        private void AddBookReport(object sender, EventArgs e)
+        {
+            var addBookReport = new AddBookReportForm();
+            addBookReport.ShowDialog();
         }
     }
 }

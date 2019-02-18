@@ -39,6 +39,7 @@
             this.AddPublisherButton = new System.Windows.Forms.Button();
             this.ListOfLoansButton = new System.Windows.Forms.Button();
             this.AddLoanButton = new System.Windows.Forms.Button();
+            this.AddBookReportButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -151,11 +152,22 @@
             this.AddLoanButton.UseVisualStyleBackColor = true;
             this.AddLoanButton.Click += new System.EventHandler(this.AddLoan);
             // 
+            // AddBookReportButton
+            // 
+            this.AddBookReportButton.Location = new System.Drawing.Point(121, 342);
+            this.AddBookReportButton.Name = "AddBookReportButton";
+            this.AddBookReportButton.Size = new System.Drawing.Size(103, 36);
+            this.AddBookReportButton.TabIndex = 11;
+            this.AddBookReportButton.Text = "Add Book Report";
+            this.AddBookReportButton.UseVisualStyleBackColor = true;
+            this.AddBookReportButton.Click += new System.EventHandler(this.AddBookReport);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AddBookReportButton);
             this.Controls.Add(this.ListOfLoansButton);
             this.Controls.Add(this.AddLoanButton);
             this.Controls.Add(this.ListOfStudentsButton);
@@ -187,5 +199,6 @@
         private System.Windows.Forms.Button AddPublisherButton;
         private System.Windows.Forms.Button ListOfLoansButton;
         private System.Windows.Forms.Button AddLoanButton;
+        private System.Windows.Forms.Button AddBookReportButton;
     }
 }

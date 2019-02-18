@@ -71,6 +71,7 @@ namespace Library.Presentation.LoanForms
             if (MessageBox.Show($@"Are you sure you want to delete {selection.Book.Name} - {selection.Student.FirstName} {selection.Student.LastName}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
             _loanRepository = new LoanRepository();
             _loanRepository.DeleteLoan(selection);
+            Search(sender, e);
             UpdateList();
         }
 
@@ -83,6 +84,7 @@ namespace Library.Presentation.LoanForms
             }
             var loanDetails = new LoanDetails((Loan)LoansListBox.SelectedItem);
             loanDetails.ShowDialog();
+            Search(sender, e);
             UpdateList();
         }
 
@@ -95,6 +97,7 @@ namespace Library.Presentation.LoanForms
             }
             var editLoan = new EditLoanForm((Loan)LoansListBox.SelectedItem);
             editLoan.ShowDialog();
+            Search(sender, e);
             UpdateList();
         }
 
@@ -107,6 +110,7 @@ namespace Library.Presentation.LoanForms
 
         public List<Loan> ActiveListUpdate()
         {
+            _loanRepository = new LoanRepository();
             return ShowActive ? _loanRepository.GetAllLoans().Where(loan => loan.IsLoanActive()).ToList() : _loanRepository.GetAllLoans();
         }
 
@@ -140,7 +144,7 @@ namespace Library.Presentation.LoanForms
                 return;
             }
             LoansListBox.Items.Clear();
-            if (searchLoansList.Count == _loanRepository.GetAllLoans().Count)
+            if (searchLoansList.Count == ActiveListUpdate().Count)
             {
                 Loans = ActiveListUpdate();
                 UpdateList();
