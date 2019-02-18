@@ -54,6 +54,7 @@
             this.DeleteButton.TabIndex = 10;
             this.DeleteButton.Text = "Delete Loan";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.Delete);
             // 
             // EditButton
             // 

@@ -32,5 +32,11 @@ namespace Library.Domain
             _context.Loans.Add(loanToAdd);
             _context.SaveChanges();
         }
+
+        public void DeleteLoan(Loan loanToDelete)
+        {
+            _context.Loans.Remove(loanToDelete);
+            _context.SaveChanges();
+        }
     }
 }

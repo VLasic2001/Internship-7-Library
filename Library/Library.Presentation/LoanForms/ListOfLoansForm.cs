@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Library.Data.Models;
 using Library.Domain;
 
 namespace Library.Presentation.LoanForms
@@ -40,6 +41,19 @@ namespace Library.Presentation.LoanForms
         private void Close(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Delete(object sender, EventArgs e)
+        {
+            if (LoansListBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select the loan you want to delete", @"No loan selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var selection = (Loan)LoansListBox.SelectedItem;
+            if (MessageBox.Show($@"Are you sure you want to delete {selection.Book.Name} - {selection.Student.FirstName}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+            _loanRepository.DeleteLoan(selection);
+            UpdateList();
         }
     }
 }
