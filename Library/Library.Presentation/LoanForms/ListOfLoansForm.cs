@@ -71,6 +71,10 @@ namespace Library.Presentation.LoanForms
             if (MessageBox.Show($@"Are you sure you want to delete {selection.Book.Name} - {selection.Student.FirstName} {selection.Student.LastName}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
             _loanRepository = new LoanRepository();
             _loanRepository.DeleteLoan(selection);
+            FirstNameTextBox.Text = "";
+            LastNameTextBox.Text = "";
+            StudentClassComboBox.SelectedIndex = 0;
+            BookNameTextBox.Text = "";
             Search(sender, e);
             UpdateList();
         }
@@ -84,6 +88,10 @@ namespace Library.Presentation.LoanForms
             }
             var loanDetails = new LoanDetails((Loan)LoansListBox.SelectedItem);
             loanDetails.ShowDialog();
+            FirstNameTextBox.Text = "";
+            LastNameTextBox.Text = "";
+            StudentClassComboBox.SelectedIndex = 0;
+            BookNameTextBox.Text = "";
             Search(sender, e);
             UpdateList();
         }
