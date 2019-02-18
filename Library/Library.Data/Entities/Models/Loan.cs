@@ -29,5 +29,15 @@ namespace Library.Data.Models
             LoanDate = loanDate;
             ReturnDate = returnDate;
         }
+
+        public override string ToString()
+        {   
+            return IsLoanActive() ? $"{Book.Name} - {Student.FirstName}, is active (loaned {Math.Ceiling((DateTime.Now-LoanDate).TotalDays)} days ago)" : $"{Book.Name} - {Student.FirstName}, was returned {ReturnDate.Value.ToShortDateString()}";
+        }
+
+        public bool IsLoanActive()
+        {
+            return ReturnDate == null;
+        }
     }
 }

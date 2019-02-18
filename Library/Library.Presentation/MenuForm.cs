@@ -87,5 +87,11 @@ namespace Library.Presentation
             var addLoan = new AddLoanForm();
             addLoan.ShowDialog();
         }
+
+        private void ListOfLoans(object sender, EventArgs e)
+        {
+            var listOfLoans = new ListOfLoansForm();
+            listOfLoans.ShowDialog();
+        }
     }
 }

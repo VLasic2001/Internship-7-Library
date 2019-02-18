@@ -139,6 +139,7 @@
             this.ListOfLoansButton.TabIndex = 10;
             this.ListOfLoansButton.Text = "List Of Loans";
             this.ListOfLoansButton.UseVisualStyleBackColor = true;
+            this.ListOfLoansButton.Click += new System.EventHandler(this.ListOfLoans);
             // 
             // AddLoanButton
             // 

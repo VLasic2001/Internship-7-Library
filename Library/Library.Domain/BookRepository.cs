@@ -33,7 +33,7 @@ namespace Library.Domain
 
         public List<Book> GetAllBooks()
         {
-            return _context.Books.ToList();
+            return _context.Books.Include(book => book.Loans).ToList();
         }
 
         public void DeleteBook(Book bookToDelete)

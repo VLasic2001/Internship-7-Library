@@ -168,6 +168,12 @@
     <Compile Include="LoanForms\AddLoanForm.Designer.cs">
       <DependentUpon>AddLoanForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoanForms\ListOfLoansForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoanForms\ListOfLoansForm.Designer.cs">
+      <DependentUpon>ListOfLoansForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoanForms\AddLoanForm.resx">
       <DependentUpon>AddLoanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoanForms\ListOfLoansForm.resx">
+      <DependentUpon>ListOfLoansForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
