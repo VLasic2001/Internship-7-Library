@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Data.Enums;
+using Library.Infrastructure;
 
 namespace Library.Presentation.StudentForms
 {
@@ -67,8 +68,8 @@ namespace Library.Presentation.StudentForms
 
         public void EditStudent()
         {
-            _context.Students.Find(_student.StudentId).FirstName = FirstNameTextBox.Text;
-            _context.Students.Find(_student.StudentId).LastName = LastNameTextBox.Text;
+            _context.Students.Find(_student.StudentId).FirstName = FirstNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
+            _context.Students.Find(_student.StudentId).LastName = LastNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
             _context.Students.Find(_student.StudentId).DateOfBirth = DateOfBirthDateTimePicker.Value;
             _context.Students.Find(_student.StudentId).Gender = (Gender)GenderComboBox.SelectedItem;
             _context.Students.Find(_student.StudentId).Class = ClassTextBox.Text;

@@ -43,20 +43,20 @@ namespace Library.Presentation.Popups
                 {
                     if (string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
                     {
-                        if (student.LastName.Contains(LastNameTextBox.Text))
+                        if (student.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower()))
                         {
                             searchStudentsList.Add(student);
                         }
                     }
                     else if (string.IsNullOrWhiteSpace(LastNameTextBox.Text))
                     {
-                        if (student.FirstName.Contains(FirstNameTextBox.Text))
+                        if (student.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower()))
                         {
                             searchStudentsList.Add(student);
                         }
                     }
-                    else if (student.FirstName.Contains(FirstNameTextBox.Text) &&
-                             student.LastName.Contains(LastNameTextBox.Text))
+                    else if (student.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower()) &&
+                             student.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower()))
                     {
                         searchStudentsList.Add(student);
                     }

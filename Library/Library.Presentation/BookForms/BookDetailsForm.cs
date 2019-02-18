@@ -18,6 +18,7 @@ namespace Library.Presentation.BookForms
     {
         private Book _book { get; set; }
         private LibraryContext _context { get; set; }
+        private BookRepository _bookRepository { get; set; }
 
         public BookDetailsForm(Book book)
         {
@@ -30,7 +31,8 @@ namespace Library.Presentation.BookForms
         public void BookSetup()
         {
             _context = new LibraryContext();
-            _book = _context.Books.ToList().FirstOrDefault(book => book.BookId == _book.BookId);
+            _bookRepository = new BookRepository();
+            _book = _bookRepository.GetBook(_book.BookId);
             var authorRepository = new AuthorRepository();
             _book.Author = authorRepository.GetAuthor(_book.AuthorId);
             var publisherRepository = new PublisherRepository();
@@ -47,7 +49,7 @@ namespace Library.Presentation.BookForms
             NumberOfCopiesLabel.Text = $"Number Of Copies: {_book.NumberOfCopies}";
             AuthorLabel.Text = $"Author: {_book.Author.FirstName} {_book.Author.LastName}";
             PublisherLabel.Text = $"Publisher: {_book.Publisher.Name}";
-            //NumberOfAvailableCopiesLabel.Text = $"Number Of Available Copies: {_book.NumberOfCopies - _context.Loans.NumberOfActiveLoans(_book)}";
+            NumberOfAvailableCopiesLabel.Text = $"Number Of Available Copies: {_book.NumberOfCopies - _book.Loans.Count(loan => loan.IsLoanActive())}";
         }
 
         private void Edit(object sender, EventArgs e)

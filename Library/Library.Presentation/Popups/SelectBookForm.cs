@@ -41,7 +41,7 @@ namespace Library.Presentation.Popups
 
             foreach (var book in _bookRepository.GetAllBooks())
             {
-                if (book.Name.Contains(NameTextBox.Text))
+                if (book.Name.ToLower().Contains(NameTextBox.Text.ToLower()))
                 {
                     searchPublisherList.Add(book);
                 }

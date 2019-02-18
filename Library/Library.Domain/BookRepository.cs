@@ -22,7 +22,7 @@ namespace Library.Domain
 
         public Book GetBook(int id)
         {
-            return _context.Books.Find(id);
+            return _context.Books.Include(book => book.Loans).FirstOrDefault(book => book.BookId == id);
         }
 
         public void AddBook(Book bookToAdd)

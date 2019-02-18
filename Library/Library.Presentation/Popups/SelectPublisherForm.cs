@@ -43,7 +43,7 @@ namespace Library.Presentation.Popups
 
             foreach (var publisher in _publisherRepository.GetAllPublishers())
             {
-                if (publisher.Name.Contains(NameTextBox.Text))
+                if (publisher.Name.ToLower().Contains(NameTextBox.Text.ToLower()))
                 {
                     searchPublisherList.Add(publisher);
                 }

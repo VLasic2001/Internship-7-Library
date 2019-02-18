@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Models;
 using Library.Domain;
+using Library.Infrastructure;
 
 namespace Library.Presentation.PublisherForms
 {
@@ -42,7 +43,7 @@ namespace Library.Presentation.PublisherForms
 
         public void CreateAndAddPublisher()
         {
-            _publisherRepository.AddPublisher(new Publisher(NameTextBox.Text));
+            _publisherRepository.AddPublisher(new Publisher(NameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters()));
         }
 
         private void Close(object sender, EventArgs e)

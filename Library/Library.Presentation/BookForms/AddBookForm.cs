@@ -12,6 +12,7 @@ using Library.Data.Entities.Models;
 using Library.Data.Enums;
 using Library.Data.Models;
 using Library.Domain;
+using Library.Infrastructure;
 using Library.Presentation.Popups;
 
 namespace Library.Presentation.BookForms
@@ -109,8 +110,7 @@ namespace Library.Presentation.BookForms
 
         public void CreateAndAddBook()
         {
-
-            BookRepository.AddBook(new Book(BookNameTextBox.Text, decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
+            BookRepository.AddBook(new Book(BookNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters(), decimal.ToInt32(NumberOfPagesNumericUpDown.Value),
                 (Genre)GenreComboBox.SelectedIndex, decimal.ToInt32(NumberOfCopiesNumericUpDown.Value), Author, Publisher));
         }
 

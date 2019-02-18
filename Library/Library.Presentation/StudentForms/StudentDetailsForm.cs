@@ -33,7 +33,9 @@ namespace Library.Presentation.StudentForms
             LastNameLabel.Text = $"Last Name: {_student.LastName}";
             DateOfBirthLabel.Text = $"Date Of Birth: {_student.DateOfBirth.ToShortDateString()}";
             GenderLabel.Text = $"Gender: {_student.Gender}";
-            ClassLabel.Text = $"Gender: {_student.Class}";
+            ClassLabel.Text = $"Class: {_student.Class}";
+            NumberOfActiveLoansLabel.Text =
+                $"Number Of Active Loans: {_student.Loans.Count(loan => loan.IsLoanActive())}";
         }
 
         private void Close(object sender, EventArgs e)

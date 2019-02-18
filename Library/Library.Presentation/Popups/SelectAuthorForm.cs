@@ -45,20 +45,20 @@ namespace Library.Presentation.Popups
                 {
                     if (string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
                     {
-                        if (author.LastName.Contains(LastNameTextBox.Text))
+                        if (author.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower()))
                         {
                             searchAuthorList.Add(author);
                         }
                     }
                     else if (string.IsNullOrWhiteSpace(LastNameTextBox.Text))
                     {
-                        if (author.FirstName.Contains(FirstNameTextBox.Text))
+                        if (author.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower()))
                         {
                             searchAuthorList.Add(author);
                         }
                     }
-                    else if (author.FirstName.Contains(FirstNameTextBox.Text) &&
-                        author.LastName.Contains(LastNameTextBox.Text))
+                    else if (author.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower()) &&
+                        author.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower()))
                     {
                         searchAuthorList.Add(author);
                     }

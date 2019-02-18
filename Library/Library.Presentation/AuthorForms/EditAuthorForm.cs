@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
+using Library.Infrastructure;
 
 namespace Library.Presentation.AuthorForms
 {
@@ -50,8 +51,8 @@ namespace Library.Presentation.AuthorForms
 
         public void EditAuthor()
         {
-            _context.Authors.Find(_author.AuthorId).FirstName = FirstNameTextBox.Text;
-            _context.Authors.Find(_author.AuthorId).LastName = LastNameTextBox.Text;
+            _context.Authors.Find(_author.AuthorId).FirstName = FirstNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
+            _context.Authors.Find(_author.AuthorId).LastName = LastNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
             _context.SaveChanges();
         }
 

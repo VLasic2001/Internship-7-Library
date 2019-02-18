@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities.Models;
 using Library.Domain;
+using Library.Infrastructure;
 
 namespace Library.Presentation.AuthorForms
 {
@@ -25,13 +26,13 @@ namespace Library.Presentation.AuthorForms
         {
             if (!IsInCorrectFormat()) return;
             CreateAndAddAuthor();
-            MessageBox.Show(@"Author successfully added", @"Success", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(@"Author successfully added", @"Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 
         public bool IsInCorrectFormat()
         {
-            if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text) ||
+            if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text) &&
                 !string.IsNullOrWhiteSpace(LastNameTextBox.Text)) return true;
             MessageBox.Show(@"Name cannot be empty", @"Name empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
@@ -44,7 +45,8 @@ namespace Library.Presentation.AuthorForms
 
         public void CreateAndAddAuthor()
         {
-            _authorRepository.AddAuthor(new Author(FirstNameTextBox.Text, LastNameTextBox.Text));
+            _authorRepository.AddAuthor(new Author(FirstNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters(),
+                LastNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters()));
         }
     }
 }

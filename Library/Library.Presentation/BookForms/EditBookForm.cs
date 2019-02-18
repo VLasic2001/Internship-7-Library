@@ -12,6 +12,7 @@ using Library.Data.Entities.Models;
 using Library.Data.Enums;
 using Library.Data.Models;
 using Library.Domain;
+using Library.Infrastructure;
 using Library.Presentation.Popups;
 
 namespace Library.Presentation.BookForms
@@ -119,7 +120,7 @@ namespace Library.Presentation.BookForms
         public void EditBook()
         {
             var bookToEdit = _context.Books.Find(_book.BookId);
-            bookToEdit.Name = BookNameTextBox.Text;
+            bookToEdit.Name = BookNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
             bookToEdit.NumberOfPages = decimal.ToInt32(NumberOfPagesNumericUpDown.Value);
             bookToEdit.Genre = (Genre)GenreComboBox.SelectedIndex;
             bookToEdit.NumberOfCopies = decimal.ToInt32(NumberOfCopiesNumericUpDown.Value);

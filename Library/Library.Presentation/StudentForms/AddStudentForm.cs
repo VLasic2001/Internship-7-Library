@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Library.Data.Entities.Models;
 using Library.Data.Enums;
 using Library.Domain;
+using Library.Infrastructure;
 
 namespace Library.Presentation.StudentForms
 {
@@ -33,7 +34,10 @@ namespace Library.Presentation.StudentForms
         private void Save(object sender, EventArgs e)
         {
             if (!IsInCorrectFormat()) return;
-            _studentRepository.AddStudent(new Student(FirstNameTextBox.Text, LastNameTextBox.Text, DateOfBirthDateTimePicker.Value, (Gender)GenderComboBox.SelectedItem, ClassTextBox.Text));
+            _studentRepository.AddStudent(new Student(FirstNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters(),
+                LastNameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters(), DateOfBirthDateTimePicker.Value,
+                (Gender)GenderComboBox.SelectedItem, ClassTextBox.Text));
+            MessageBox.Show(@"Successfully added the student", @"Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 

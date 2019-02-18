@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Models;
+using Library.Infrastructure;
 
 namespace Library.Presentation.PublisherForms
 {
@@ -47,7 +48,7 @@ namespace Library.Presentation.PublisherForms
 
         public void EditPublisher()
         {
-            _context.Publishers.Find(_publisher.PublisherId).Name = NameTextBox.Text;
+            _context.Publishers.Find(_publisher.PublisherId).Name = NameTextBox.Text.RemoveDoubleWhiteSpaces().UpperCaseFirstLetters();
             _context.SaveChanges();
         }
 
