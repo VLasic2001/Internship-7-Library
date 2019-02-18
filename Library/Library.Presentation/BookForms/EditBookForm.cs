@@ -43,6 +43,7 @@ namespace Library.Presentation.BookForms
             BookNameTextBox.Text = _book.Name;
             NumberOfPagesNumericUpDown.Value = _book.NumberOfPages;
             GenreComboBox.SelectedItem = _book.Genre;
+            NumberOfCopiesNumericUpDown.Value = _book.NumberOfCopies;
             SelectedAuthorLabel.Text = Author.ToString();
             SelectedPublisherLabel.Text = Publisher.ToString();
         }
@@ -127,6 +128,11 @@ namespace Library.Presentation.BookForms
             bookToEdit.AuthorId = Author.AuthorId;
             bookToEdit.PublisherId = Publisher.PublisherId;
             _context.SaveChanges();
+        }
+
+        private void Close(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

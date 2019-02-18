@@ -32,7 +32,7 @@ namespace Library.Data.Models
 
         public override string ToString()
         {   
-            return IsLoanActive() ? $"{Book.Name} - {Student.FirstName}, is active (loaned {Math.Ceiling((DateTime.Now-LoanDate).TotalDays)} days ago)" : $"{Book.Name} - {Student.FirstName}, was returned {ReturnDate.Value.ToShortDateString()}";
+            return IsLoanActive() ? $"{Book.Name} - {Student.FirstName} {Student.LastName} {Student.Class}, is active (loaned {Math.Ceiling((DateTime.Now-LoanDate).TotalDays)} days ago)" : $"{Book.Name} - {Student.FirstName}, was returned {ReturnDate.Value.ToShortDateString()}";
         }
 
         public bool IsLoanActive()

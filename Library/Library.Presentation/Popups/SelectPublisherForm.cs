@@ -78,6 +78,5 @@ namespace Library.Presentation.Popups
         {
             Close();
         }
-
     }
 }

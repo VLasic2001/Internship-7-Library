@@ -21,7 +21,7 @@ namespace Library.Domain
 
         public Student GetStudent(int id)
         {
-            return _context.Students.Include(student => student.Loans).FirstOrDefault(student => student.StudentId == id);
+            return _context.Students.Include(student => student.Loans).ThenInclude(loan => loan.Book).FirstOrDefault(student => student.StudentId == id);
         }
 
         public List<Student> GetAllStudents()

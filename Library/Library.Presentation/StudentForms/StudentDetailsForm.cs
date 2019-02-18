@@ -34,8 +34,16 @@ namespace Library.Presentation.StudentForms
             DateOfBirthLabel.Text = $"Date Of Birth: {_student.DateOfBirth.ToShortDateString()}";
             GenderLabel.Text = $"Gender: {_student.Gender}";
             ClassLabel.Text = $"Class: {_student.Class}";
-            NumberOfActiveLoansLabel.Text =
-                $"Number Of Active Loans: {_student.Loans.Count(loan => loan.IsLoanActive())}";
+            if (_student.Loans.Count(loan => loan.IsLoanActive()) != 0)
+            {
+                ActiveLoanLabel.Text = $"Active Loan: {_student.Loans.FirstOrDefault(loan => loan.IsLoanActive()).Book.Name}";
+            }
+            else
+            {
+                ActiveLoanLabel.Text = "No Active Loans";
+                WarningLabel.Visible = false;
+            }
+
         }
 
         private void Close(object sender, EventArgs e)

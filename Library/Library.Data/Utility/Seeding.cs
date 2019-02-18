@@ -12,10 +12,9 @@ namespace Library.Data.Utility
 {
     public static class Seeding
     {
-        public static void SeedingData()
+        public static void SeedingData(LibraryContext context)
         {
             
-            var context = new LibraryContext();
             if (!context.Authors.Any())
             {
                 context.Authors.AddRange(new Author {FirstName = "Luka", LastName = "Lukanovic"},
@@ -23,6 +22,7 @@ namespace Library.Data.Utility
                     new Author {FirstName = "Roko", LastName = "Rokic"});
             }
 
+            context.SaveChanges();
             if (!context.Publishers.Any())
             {
                 context.Publishers.AddRange(
@@ -50,7 +50,7 @@ namespace Library.Data.Utility
                     new Book
                     {
                         Name = "Dracula", NumberOfPages = 143, Genre = Genre.Horror,
-                        NumberOfCopies = 30, AuthorId = 3, PublisherId = 3
+                        NumberOfCopies = 30, AuthorId = 2, PublisherId = 1
                     });
             }
 

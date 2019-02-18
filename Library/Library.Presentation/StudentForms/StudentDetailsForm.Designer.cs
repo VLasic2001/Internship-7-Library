@@ -34,9 +34,10 @@
             this.DateOfBirthLabel = new System.Windows.Forms.Label();
             this.GenderLabel = new System.Windows.Forms.Label();
             this.ClassLabel = new System.Windows.Forms.Label();
-            this.NumberOfActiveLoansLabel = new System.Windows.Forms.Label();
+            this.ActiveLoanLabel = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
+            this.WarningLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -99,15 +100,15 @@
             this.ClassLabel.TabIndex = 5;
             this.ClassLabel.Text = "Class: ";
             // 
-            // NumberOfActiveLoansLabel
+            // ActiveLoanLabel
             // 
-            this.NumberOfActiveLoansLabel.AutoSize = true;
-            this.NumberOfActiveLoansLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.NumberOfActiveLoansLabel.Location = new System.Drawing.Point(426, 100);
-            this.NumberOfActiveLoansLabel.Name = "NumberOfActiveLoansLabel";
-            this.NumberOfActiveLoansLabel.Size = new System.Drawing.Size(220, 24);
-            this.NumberOfActiveLoansLabel.TabIndex = 6;
-            this.NumberOfActiveLoansLabel.Text = "Number Of Active Loans:";
+            this.ActiveLoanLabel.AutoSize = true;
+            this.ActiveLoanLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.ActiveLoanLabel.Location = new System.Drawing.Point(426, 100);
+            this.ActiveLoanLabel.Name = "ActiveLoanLabel";
+            this.ActiveLoanLabel.Size = new System.Drawing.Size(113, 24);
+            this.ActiveLoanLabel.TabIndex = 6;
+            this.ActiveLoanLabel.Text = "Active Loan:";
             // 
             // CloseButton
             // 
@@ -129,14 +130,26 @@
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.Edit);
             // 
+            // WarningLabel
+            // 
+            this.WarningLabel.AutoSize = true;
+            this.WarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.WarningLabel.ForeColor = System.Drawing.Color.Red;
+            this.WarningLabel.Location = new System.Drawing.Point(468, 128);
+            this.WarningLabel.Name = "WarningLabel";
+            this.WarningLabel.Size = new System.Drawing.Size(270, 20);
+            this.WarningLabel.TabIndex = 16;
+            this.WarningLabel.Text = "*Student Cannot Loan Another Book";
+            // 
             // StudentDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.WarningLabel);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.EditButton);
-            this.Controls.Add(this.NumberOfActiveLoansLabel);
+            this.Controls.Add(this.ActiveLoanLabel);
             this.Controls.Add(this.ClassLabel);
             this.Controls.Add(this.GenderLabel);
             this.Controls.Add(this.DateOfBirthLabel);
@@ -158,8 +171,9 @@
         private System.Windows.Forms.Label DateOfBirthLabel;
         private System.Windows.Forms.Label GenderLabel;
         private System.Windows.Forms.Label ClassLabel;
-        private System.Windows.Forms.Label NumberOfActiveLoansLabel;
+        private System.Windows.Forms.Label ActiveLoanLabel;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Label WarningLabel;
     }
 }

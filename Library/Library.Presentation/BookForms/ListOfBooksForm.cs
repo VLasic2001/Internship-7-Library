@@ -17,20 +17,27 @@ namespace Library.Presentation.BookForms
 {
     public partial class ListOfBooksForm : Form
     {
-
+        private LoanRepository _loanRepository { get; set; }
         private BookRepository _bookRepository { get; set; }
     
         public ListOfBooksForm()
         {
             InitializeComponent();
-            UpdateList();
+            UpdateForm();
         }
 
-        public void UpdateList()
+        public void UpdateForm()
         {
             _bookRepository = new BookRepository();
+            _loanRepository = new LoanRepository();
             BooksListBox.Items.Clear();
             _bookRepository.GetAllBooks().ForEach(book => BooksListBox.Items.Add(book));
+            var totalNumberOfBooks = 0;
+            _bookRepository.GetAllBooks().ForEach(book => totalNumberOfBooks+=book.NumberOfCopies);
+            TotalNumberOfBooksLabel.Text = $"Total Number Of Library's Books: {totalNumberOfBooks}";
+            var numberOfActiveLoans = _loanRepository.GetAllLoans().Count(loan => loan.IsLoanActive());
+            NumberOfAvailableBooksLabel.Text = $"Number Of Available Books: {totalNumberOfBooks - numberOfActiveLoans}";
+            NumberOfLoanedBooks.Text = $"Number Of Loaned Books: {numberOfActiveLoans}";
         }
 
         private void Close(object sender, EventArgs e)
@@ -46,9 +53,9 @@ namespace Library.Presentation.BookForms
                 return;
             }
             var selection = (Book) BooksListBox.SelectedItem;
-            if (MessageBox.Show($@"Are you sure you want to delete {selection.Name}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+            if (MessageBox.Show(selection.Loans.Count > 0 ? $@"Are you sure you want to delete {selection.Name}?" + "\n" + "Deleting the book will also delete all of the book's loans" : $"Are you sure you want to delete {selection.Name}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
             _bookRepository.DeleteBook(selection);
-            UpdateList();
+            UpdateForm();
         }
 
         private void Details(object sender, EventArgs e)
@@ -60,7 +67,7 @@ namespace Library.Presentation.BookForms
             }
             var bookDetails = new BookDetailsForm((Book)BooksListBox.SelectedItem);
             bookDetails.ShowDialog();
-            UpdateList();
+            UpdateForm();
         }
 
         private void Edit(object sender, EventArgs e)
@@ -72,7 +79,36 @@ namespace Library.Presentation.BookForms
             }
              var editBook = new EditBookForm((Book)BooksListBox.SelectedItem);
             editBook.ShowDialog();
-            UpdateList();
+            UpdateForm();
+        }
+
+        private void Search(object sender, EventArgs e)
+        {
+            var searchPublisherList = new List<Book>();
+
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text))
+            {
+                BooksListBox.Items.Clear();
+                _bookRepository.GetAllBooks().ForEach(author => BooksListBox.Items.Add(author));
+            }
+
+            foreach (var book in _bookRepository.GetAllBooks())
+            {
+                if (book.Name.ToLower().Contains(NameTextBox.Text.ToLower()))
+                {
+                    searchPublisherList.Add(book);
+                }
+            }
+            if (searchPublisherList.Count == 0)
+            {
+                MessageBox.Show(@"No books fit the search conditions", @"Invalid search term", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                BooksListBox.Items.Clear();
+                searchPublisherList.ForEach(author => BooksListBox.Items.Add(author));
+            }
         }
     }
 }

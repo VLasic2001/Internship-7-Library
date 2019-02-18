@@ -55,6 +55,7 @@
             this.CloseButton.TabIndex = 25;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.Close);
             // 
             // SaveButton
             // 

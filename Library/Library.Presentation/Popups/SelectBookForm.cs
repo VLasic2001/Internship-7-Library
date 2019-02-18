@@ -75,5 +75,14 @@ namespace Library.Presentation.Popups
                 Close();
             }
         }
+
+        private void SelectedBook(object sender, EventArgs e)
+        {
+            if (BooksListBox.SelectedItem == null) return;
+            var selection = (Book)BooksListBox.SelectedItem;
+            if (selection.Loans.Count(loan => loan.IsLoanActive()) < selection.NumberOfCopies) return;
+            MessageBox.Show(@"All Copies Of The Book Are Loaned", @"No Copy Available", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            BooksListBox.ClearSelected();
+        }
     }
 }

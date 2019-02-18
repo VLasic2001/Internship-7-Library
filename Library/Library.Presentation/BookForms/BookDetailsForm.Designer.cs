@@ -36,8 +36,9 @@
             this.PublisherLabel = new System.Windows.Forms.Label();
             this.EditButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.NumberOfCopiesLabel = new System.Windows.Forms.Label();
+            this.NumberOfLibrarysCopiesLabel = new System.Windows.Forms.Label();
             this.NumberOfAvailableCopiesLabel = new System.Windows.Forms.Label();
+            this.NumberOfLoanedCopiesLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -120,15 +121,15 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.Close);
             // 
-            // NumberOfCopiesLabel
+            // NumberOfLibrarysCopiesLabel
             // 
-            this.NumberOfCopiesLabel.AutoSize = true;
-            this.NumberOfCopiesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.NumberOfCopiesLabel.Location = new System.Drawing.Point(48, 216);
-            this.NumberOfCopiesLabel.Name = "NumberOfCopiesLabel";
-            this.NumberOfCopiesLabel.Size = new System.Drawing.Size(177, 24);
-            this.NumberOfCopiesLabel.TabIndex = 8;
-            this.NumberOfCopiesLabel.Text = "Number Of Copies: ";
+            this.NumberOfLibrarysCopiesLabel.AutoSize = true;
+            this.NumberOfLibrarysCopiesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.NumberOfLibrarysCopiesLabel.Location = new System.Drawing.Point(48, 216);
+            this.NumberOfLibrarysCopiesLabel.Name = "NumberOfLibrarysCopiesLabel";
+            this.NumberOfLibrarysCopiesLabel.Size = new System.Drawing.Size(251, 24);
+            this.NumberOfLibrarysCopiesLabel.TabIndex = 8;
+            this.NumberOfLibrarysCopiesLabel.Text = "Number Of Library\'s Copies: ";
             // 
             // NumberOfAvailableCopiesLabel
             // 
@@ -140,13 +141,24 @@
             this.NumberOfAvailableCopiesLabel.TabIndex = 9;
             this.NumberOfAvailableCopiesLabel.Text = "Number Of Available Copies:";
             // 
+            // NumberOfLoanedCopiesLabel
+            // 
+            this.NumberOfLoanedCopiesLabel.AutoSize = true;
+            this.NumberOfLoanedCopiesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.NumberOfLoanedCopiesLabel.Location = new System.Drawing.Point(431, 135);
+            this.NumberOfLoanedCopiesLabel.Name = "NumberOfLoanedCopiesLabel";
+            this.NumberOfLoanedCopiesLabel.Size = new System.Drawing.Size(241, 24);
+            this.NumberOfLoanedCopiesLabel.TabIndex = 10;
+            this.NumberOfLoanedCopiesLabel.Text = "Number Of Loaned Copies:";
+            // 
             // BookDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 350);
+            this.Controls.Add(this.NumberOfLoanedCopiesLabel);
             this.Controls.Add(this.NumberOfAvailableCopiesLabel);
-            this.Controls.Add(this.NumberOfCopiesLabel);
+            this.Controls.Add(this.NumberOfLibrarysCopiesLabel);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.PublisherLabel);
@@ -172,7 +184,8 @@
         private System.Windows.Forms.Label PublisherLabel;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.Label NumberOfCopiesLabel;
+        private System.Windows.Forms.Label NumberOfLibrarysCopiesLabel;
         private System.Windows.Forms.Label NumberOfAvailableCopiesLabel;
+        private System.Windows.Forms.Label NumberOfLoanedCopiesLabel;
     }
 }

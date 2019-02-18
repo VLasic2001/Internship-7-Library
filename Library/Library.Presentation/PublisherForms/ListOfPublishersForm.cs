@@ -45,7 +45,7 @@ namespace Library.Presentation.PublisherForms
                 return;
             }
             var selection = (Publisher)PublishersListBox.SelectedItem;
-            if (MessageBox.Show($@"Are you sure you want to delete {selection.Name}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+            if (MessageBox.Show(selection.Books.Count > 0 ? $@"Are you sure you want to delete {selection.Name}?" + "\n" + "Deleting the publisher will also delete all of the publisher's books" : $"Are you sure you want to delete {selection.Name}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
             _publisherRepository.DeletePublisher(selection);
             UpdateList();
         }
@@ -72,6 +72,36 @@ namespace Library.Presentation.PublisherForms
             var editPublisher = new EditPublisherForm((Publisher)PublishersListBox.SelectedItem, _context);
             editPublisher.ShowDialog();
             UpdateList();
+        }
+
+        private void Search(object sender, EventArgs e)
+        {
+            var searchPublisherList = new List<Publisher>();
+
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text))
+            {
+                PublishersListBox.Items.Clear();
+                _publisherRepository.GetAllPublishers().ForEach(author => PublishersListBox.Items.Add(author));
+            }
+
+            foreach (var publisher in _publisherRepository.GetAllPublishers())
+            {
+                if (publisher.Name.ToLower().Contains(NameTextBox.Text.ToLower()))
+                {
+                    searchPublisherList.Add(publisher);
+                }
+            }
+            if (searchPublisherList.Count == 0)
+            {
+                MessageBox.Show(@"No publishers fit the search conditions", @"Invalid search term", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                PublishersListBox.Items.Clear();
+                searchPublisherList.ForEach(author => PublishersListBox.Items.Add(author));
+            }
+
         }
     }
 }

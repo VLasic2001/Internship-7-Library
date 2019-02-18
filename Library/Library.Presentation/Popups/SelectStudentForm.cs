@@ -27,51 +27,48 @@ namespace Library.Presentation.Popups
         {
             _studentRepository = new StudentRepository();
             _studentRepository.GetAllStudents().ForEach(student => StudentsListBox.Items.Add(student));
+            StudentClassComboBox.Items.Clear();
+            StudentClassComboBox.Items.Add("");
+            foreach (var studentClass in _studentRepository.GetAllStudents().GroupBy(student => student.Class).OrderBy(student => student.Key))
+            {
+
+                StudentClassComboBox.Items.Add(studentClass.Key);
+            }
+
+            StudentClassComboBox.SelectedIndex = 0;
         }
 
         private void Search(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(FirstNameTextBox.Text) && string.IsNullOrWhiteSpace(LastNameTextBox.Text))
-            {
-                StudentsListBox.Items.Clear();
-                _studentRepository.GetAllStudents().ForEach(author => StudentsListBox.Items.Add(author));
-            }
-            else
-            {
-                var searchStudentsList = new List<Student>();
-                foreach (var student in _studentRepository.GetAllStudents())
-                {
-                    if (string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
-                    {
-                        if (student.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower()))
-                        {
-                            searchStudentsList.Add(student);
-                        }
-                    }
-                    else if (string.IsNullOrWhiteSpace(LastNameTextBox.Text))
-                    {
-                        if (student.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower()))
-                        {
-                            searchStudentsList.Add(student);
-                        }
-                    }
-                    else if (student.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower()) &&
-                             student.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower()))
-                    {
-                        searchStudentsList.Add(student);
-                    }
-                }
+            var searchStudentsList = new List<Student>(_studentRepository.GetAllStudents());
 
-                if (searchStudentsList.Count == 0)
-                {
-                    MessageBox.Show(@"No students fit the search conditions", @"Invalid search term", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    StudentsListBox.Items.Clear();
-                    searchStudentsList.ForEach(author => StudentsListBox.Items.Add(author));
-                }
+            if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
+            {
+                searchStudentsList = searchStudentsList.Where(student => student.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower())).ToList();
             }
+
+            if (!string.IsNullOrWhiteSpace(LastNameTextBox.Text))
+            {
+                searchStudentsList = searchStudentsList.Where(student => student.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower())).ToList();
+            }
+
+            if (StudentClassComboBox.SelectedItem != "")
+            {
+                searchStudentsList = searchStudentsList.Where(student => student.Class == StudentClassComboBox.SelectedItem).ToList();
+            }
+
+            if (searchStudentsList.Count == 0)
+            {
+                MessageBox.Show(@"Change the search inputs and try again", @"No student matches the search inputs", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            StudentsListBox.Items.Clear();
+            if (searchStudentsList.Count == _studentRepository.GetAllStudents().Count)
+            {
+                _studentRepository.GetAllStudents().ForEach(student => StudentsListBox.Items.Add(student));
+                return;
+            }
+            searchStudentsList.ForEach(student => StudentsListBox.Items.Add(student));
         }
 
         private void Close(object sender, EventArgs e)
@@ -90,6 +87,15 @@ namespace Library.Presentation.Popups
                 Student = (Student)StudentsListBox.SelectedItem;
                 Close();
             }
+        }
+
+        private void SelectedStudent(object sender, EventArgs e)
+        {
+            if (StudentsListBox.SelectedItem == null) return;
+            var selection = (Student)StudentsListBox.SelectedItem;
+            if (selection.Loans.Count(loan => loan.IsLoanActive()) == 0) return;
+            MessageBox.Show(@"Student already has an active loan", @"Cannot select student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            StudentsListBox.ClearSelected();
         }
     }
 }

@@ -46,10 +46,13 @@ namespace Library.Presentation.BookForms
             BookNameLabel.Text = $"Book Name: {_book.Name}";
             NumberOfPagesLabel.Text = $"Number Of Pages: {_book.NumberOfPages}";
             GenreLabel.Text = $"Genre: {_book.Genre}";
-            NumberOfCopiesLabel.Text = $"Number Of Copies: {_book.NumberOfCopies}";
+            NumberOfLibrarysCopiesLabel.Text = $"Number Of Library's Copies: {_book.NumberOfCopies}";
             AuthorLabel.Text = $"Author: {_book.Author.FirstName} {_book.Author.LastName}";
             PublisherLabel.Text = $"Publisher: {_book.Publisher.Name}";
-            NumberOfAvailableCopiesLabel.Text = $"Number Of Available Copies: {_book.NumberOfCopies - _book.Loans.Count(loan => loan.IsLoanActive())}";
+            NumberOfAvailableCopiesLabel.Text =
+                $"Number Of Available Copies: {_book.NumberOfCopies - _book.Loans.Count(loan => loan.IsLoanActive())}";
+            NumberOfLoanedCopiesLabel.Text =
+                $"Number Of Loaned Copies: {_book.Loans.Count(loan => loan.IsLoanActive())}";
         }
 
         private void Edit(object sender, EventArgs e)

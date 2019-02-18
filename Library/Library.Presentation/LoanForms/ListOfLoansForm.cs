@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Library.Data.Entities.Models;
 using Library.Data.Models;
 using Library.Domain;
 
@@ -17,25 +18,41 @@ namespace Library.Presentation.LoanForms
         private LoanRepository _loanRepository { get; set; }
         private BookRepository _bookRepository { get; set; }
         private StudentRepository _studentRepository { get; set; }
+        public bool ShowActive { get; set; }
+        public List<Loan> Loans { get; set; }
 
         public ListOfLoansForm()
         {
             InitializeComponent();
             _bookRepository = new BookRepository();
             _studentRepository = new StudentRepository();
+            _loanRepository = new LoanRepository();
+            Loans = _loanRepository.GetAllLoans();
+            ShowActive = false;
             UpdateList();
         }
 
         public void UpdateList()
         {
-            _loanRepository = new LoanRepository();
+            StudentClassComboBox.Items.Clear();
+            StudentClassComboBox.Items.Add("");
+            foreach (var studentClass in _studentRepository.GetAllStudents().GroupBy(student => student.Class).OrderBy(student => student.Key))
+            {
+                StudentClassComboBox.Items.Add(studentClass.Key);
+            }
+            StudentClassComboBox.SelectedIndex = 0;
+
             LoansListBox.Items.Clear();
-            foreach (var loan in _loanRepository.GetAllLoans())
+            foreach (var loan in Loans)
             {
                 loan.Book = _bookRepository.GetBook(loan.BookId);
                 loan.Student = _studentRepository.GetStudent(loan.StudentId);
                 LoansListBox.Items.Add(loan);
             }
+
+            NumberOfActiveLoansLabel.Text =
+                $"Number Of Active Loans: {_loanRepository.GetAllLoans().Count(loan => loan.IsLoanActive())}";
+            
         }
 
         private void Close(object sender, EventArgs e)
@@ -78,6 +95,59 @@ namespace Library.Presentation.LoanForms
             }
             var editLoan = new EditLoanForm((Loan)LoansListBox.SelectedItem);
             editLoan.ShowDialog();
+            UpdateList();
+        }
+
+        private void ShowActiveCheck(object sender, EventArgs e)
+        {
+            ShowActive = !ShowActive;
+            Search(sender, e);
+            UpdateList();
+        }
+
+        public List<Loan> ActiveListUpdate()
+        {
+            return ShowActive ? _loanRepository.GetAllLoans().Where(loan => loan.IsLoanActive()).ToList() : _loanRepository.GetAllLoans();
+        }
+
+        private void Search(object sender, EventArgs e)
+        {
+            var searchLoansList = new List<Loan>(ActiveListUpdate());
+
+            if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
+            {
+                searchLoansList = searchLoansList.Where(loan => loan.Student.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower())).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(LastNameTextBox.Text))
+            {
+                searchLoansList = searchLoansList.Where(loan => loan.Student.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower())).ToList();
+            }
+
+            if (StudentClassComboBox.SelectedIndex != 0)
+            {
+                searchLoansList = searchLoansList.Where(loan => loan.Student.Class == StudentClassComboBox.SelectedItem).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(BookNameTextBox.Text))
+            {
+                searchLoansList = searchLoansList.Where(loan => loan.Book.Name.ToLower().Contains(BookNameTextBox.Text.ToLower())).ToList();
+            }
+
+            if (searchLoansList.Count == 0)
+            {
+                MessageBox.Show(@"Change the search inputs and try again", @"No loan matches the search inputs", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            LoansListBox.Items.Clear();
+            if (searchLoansList.Count == _loanRepository.GetAllLoans().Count)
+            {
+                Loans = ActiveListUpdate();
+                UpdateList();
+                return;
+            }
+
+            Loans = searchLoansList;
             UpdateList();
         }
     }

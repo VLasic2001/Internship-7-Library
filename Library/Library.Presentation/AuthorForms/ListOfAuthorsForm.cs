@@ -45,7 +45,8 @@ namespace Library.Presentation.AuthorForms
                 return;
             }
             var selection = (Author)AuthorsListBox.SelectedItem;
-            if (MessageBox.Show($@"Are you sure you want to delete {selection.FirstName} {selection.LastName}?", @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+            if (MessageBox.Show(selection.Books.Count>0 ? $@"Are you sure you want to delete {selection.FirstName} {selection.LastName}?" + "\n" + "Deleting the author will also delete all of the author's books" : $"Are you sure you want to delete {selection.FirstName} {selection.LastName}?", 
+                    @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
             _authorRepository.DeleteAuthor(selection);
             UpdateList();
         }
@@ -72,6 +73,51 @@ namespace Library.Presentation.AuthorForms
             var editAuthor = new EditAuthorForm((Author)AuthorsListBox.SelectedItem, _context);
             editAuthor.ShowDialog();
             UpdateList();
+        }
+
+        private void Search(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(FirstNameTextBox.Text) && string.IsNullOrWhiteSpace(LastNameTextBox.Text))
+            {
+                AuthorsListBox.Items.Clear();
+                _authorRepository.GetAllAuthors().ForEach(author => AuthorsListBox.Items.Add(author));
+            }
+            else
+            {
+                var searchAuthorList = new List<Author>();
+                foreach (var author in _authorRepository.GetAllAuthors())
+                {
+                    if (string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
+                    {
+                        if (author.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower()))
+                        {
+                            searchAuthorList.Add(author);
+                        }
+                    }
+                    else if (string.IsNullOrWhiteSpace(LastNameTextBox.Text))
+                    {
+                        if (author.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower()))
+                        {
+                            searchAuthorList.Add(author);
+                        }
+                    }
+                    else if (author.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower()) &&
+                             author.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower()))
+                    {
+                        searchAuthorList.Add(author);
+                    }
+                }
+
+                if (searchAuthorList.Count == 0)
+                {
+                    MessageBox.Show(@"No authors fit the search conditions", @"Invalid search term", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    AuthorsListBox.Items.Clear();
+                    searchAuthorList.ForEach(author => AuthorsListBox.Items.Add(author));
+                }
+            }
         }
     }
 }

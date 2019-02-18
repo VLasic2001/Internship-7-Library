@@ -23,25 +23,30 @@ namespace Library.Presentation
 {
     public partial class MenuForm : Form
     {
+        public LibraryContext Context { get; set; }
+
         public MenuForm()
         {
             InitializeComponent();
+            Context = new LibraryContext();
             SeedData();
         }
         
         public void SeedData()
         {
-            Seeding.SeedingData();
+            Seeding.SeedingData(Context);
         }
 
         private void AddBook(object sender, EventArgs e)
         {
+            if (!AnyAuthorsInDatabase(Context) || !AnyPublishersInDatabase(Context)) return;
             var addBook = new AddBookForm();
             addBook.ShowDialog();
         }
 
         private void ListOfBooks(object sender, EventArgs e)
         {
+            if (!AnyBooksInDatabase(Context)) return;
             var listOfBooks = new ListOfBooksForm();
             listOfBooks.ShowDialog();
         }
@@ -54,6 +59,7 @@ namespace Library.Presentation
 
         private void ListOfAuthors(object sender, EventArgs e)
         {
+            if (!AnyAuthorsInDatabase(Context)) return;
             var listOfAuthors = new ListOfAuthorsForm();
             listOfAuthors.ShowDialog();
         }
@@ -66,6 +72,7 @@ namespace Library.Presentation
 
         private void ListOfPublishers(object sender, EventArgs e)
         {
+            if (!AnyPublishersInDatabase(Context)) return;
             var listOfPublishers = new ListOfPublishersForm();
             listOfPublishers.ShowDialog();
         }
@@ -78,20 +85,58 @@ namespace Library.Presentation
 
         private void ListOfStudents(object sender, EventArgs e)
         {
+            if (!AnyStudentsInDatabase(Context)) return;
             var listOfStudents = new ListOfStudentsForm();
             listOfStudents.ShowDialog();
         }
 
         private void AddLoan(object sender, EventArgs e)
         {
+            if (!AnyStudentsInDatabase(Context) || !AnyBooksInDatabase(Context)) return;
             var addLoan = new AddLoanForm();
             addLoan.ShowDialog();
         }
 
         private void ListOfLoans(object sender, EventArgs e)
         {
+            if (!AnyLoansInDatabase(Context)) return;
             var listOfLoans = new ListOfLoansForm();
             listOfLoans.ShowDialog();
+        }
+
+        public bool AnyAuthorsInDatabase(LibraryContext context)
+        {
+            if (context.Authors.Any()) return true;
+            MessageBox.Show("Add an author and try again", "No Authors In The Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        public bool AnyPublishersInDatabase(LibraryContext context)
+        {
+            if (context.Publishers.Any()) return true;
+            MessageBox.Show("Add a publisher and try again", "No Publishers In The Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        public bool AnyBooksInDatabase(LibraryContext context)
+        {
+            if (context.Books.Any()) return true;
+            MessageBox.Show("Add a book and try again", "No Books In The Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        public bool AnyStudentsInDatabase(LibraryContext context)
+        {
+            if (context.Students.Any()) return true;
+            MessageBox.Show("Add a student and try again", "No Students In The Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        public bool AnyLoansInDatabase(LibraryContext context)
+        {
+            if (context.Loans.Any()) return true;
+            MessageBox.Show("Add a loan and try again", "No Loans In The Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
         }
     }
 }
