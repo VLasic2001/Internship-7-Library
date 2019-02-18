@@ -48,6 +48,7 @@ namespace Library.Presentation.Features
         {
             if (!IsInCorrectFormat()) return;
             CreateAndAddBookReport(_studentRepository.GetAllStudents().Where(student => student.Class == ClassComboBox.Text).ToList());
+            MessageBox.Show("Succesfully added the book report", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 
@@ -56,7 +57,6 @@ namespace Library.Presentation.Features
             if (_book != null) return true;
             MessageBox.Show("Select a book and try again", "No Book Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
-
         }
 
         private void SelectBookReport(object sender, EventArgs e)
