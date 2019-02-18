@@ -133,9 +133,13 @@
     <Compile Include="Entities\Models\Loan.cs" />
     <Compile Include="Entities\Models\Publisher.cs" />
     <Compile Include="Entities\Models\Student.cs" />
-    <Compile Include="Migrations\20190218105657_InitialCreate.cs" />
-    <Compile Include="Migrations\20190218105657_InitialCreate.designer.cs">
-      <DependentUpon>20190218105657_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\20190218214544_InitialCreate.cs" />
+    <Compile Include="Migrations\20190218214544_InitialCreate.designer.cs">
+      <DependentUpon>20190218214544_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190218220644_SeedingData.cs" />
+    <Compile Include="Migrations\20190218220644_SeedingData.designer.cs">
+      <DependentUpon>20190218220644_SeedingData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

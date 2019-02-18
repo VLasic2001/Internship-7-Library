@@ -120,22 +120,22 @@ namespace Library.Presentation.LoanForms
 
             if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
             {
-                searchLoansList = searchLoansList.Where(loan => loan.Student.FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower())).ToList();
+                searchLoansList = searchLoansList.Where(loan => _studentRepository.GetStudent(loan.StudentId).FirstName.ToLower().Contains(FirstNameTextBox.Text.ToLower())).ToList();
             }
 
             if (!string.IsNullOrWhiteSpace(LastNameTextBox.Text))
             {
-                searchLoansList = searchLoansList.Where(loan => loan.Student.LastName.ToLower().Contains(LastNameTextBox.Text.ToLower())).ToList();
+                searchLoansList = searchLoansList.Where(loan => _studentRepository.GetStudent(loan.StudentId).LastName.ToLower().Contains(LastNameTextBox.Text.ToLower())).ToList();
             }
 
             if (StudentClassComboBox.SelectedIndex != 0)
             {
-                searchLoansList = searchLoansList.Where(loan => loan.Student.Class == StudentClassComboBox.SelectedItem).ToList();
+                searchLoansList = searchLoansList.Where(loan => _studentRepository.GetStudent(loan.StudentId).Class == StudentClassComboBox.SelectedItem.ToString()).ToList();
             }
 
             if (!string.IsNullOrWhiteSpace(BookNameTextBox.Text))
             {
-                searchLoansList = searchLoansList.Where(loan => loan.Book.Name.ToLower().Contains(BookNameTextBox.Text.ToLower())).ToList();
+                searchLoansList = searchLoansList.Where(loan => _bookRepository.GetBook(loan.BookId).Name.ToLower().Contains(BookNameTextBox.Text.ToLower())).ToList();
             }
 
             if (searchLoansList.Count == 0)

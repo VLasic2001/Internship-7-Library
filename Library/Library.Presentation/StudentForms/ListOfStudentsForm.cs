@@ -101,7 +101,7 @@ namespace Library.Presentation.StudentForms
 
             if (StudentClassComboBox.SelectedItem != "")
             {
-                searchStudentsList = searchStudentsList.Where(student => student.Class == StudentClassComboBox.SelectedItem).ToList();
+                searchStudentsList = searchStudentsList.Where(student => student.Class == StudentClassComboBox.SelectedItem.ToString()).ToList();
             }
 
             if (searchStudentsList.Count == 0)

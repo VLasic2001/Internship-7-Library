@@ -30,12 +30,6 @@ namespace Library.Presentation
         {
             InitializeComponent();
             Context = new LibraryContext();
-            SeedData();
-        }
-        
-        public void SeedData()
-        {
-            Seeding.SeedingData(Context);
         }
 
         private void AddBook(object sender, EventArgs e)

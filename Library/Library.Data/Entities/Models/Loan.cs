@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace Library.Data.Models
 {
     public class Loan
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LoanId { get; set; }
         public Book Book { get; set; }
         public int BookId { get; set; }
@@ -32,7 +34,7 @@ namespace Library.Data.Models
 
         public override string ToString()
         {   
-            return IsLoanActive() ? $"{Book.Name} - {Student.FirstName} {Student.LastName} {Student.Class}, is active (loaned {Math.Ceiling((DateTime.Now-LoanDate).TotalDays)} days ago)" : $"{Book.Name} - {Student.FirstName}, was returned {ReturnDate.Value.ToShortDateString()}";
+            return IsLoanActive() ? $"{Book.Name} - {Student.FirstName} {Student.LastName} {Student.Class}, is active (loaned {Math.Ceiling((DateTime.Now-LoanDate).TotalDays)} days ago)" : $"{Book.Name} - {Student.FirstName} {Student.FirstName} {Student.Class}, was returned {ReturnDate.Value.ToShortDateString()}";
         }
 
         public bool IsLoanActive()
